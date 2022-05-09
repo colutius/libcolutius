@@ -25,6 +25,11 @@
 var NAVTREE =
 [
   [ "libcolutius", "index.html", [
+    [ "libcolutius", "md_README.html", [
+      [ "<a href=\"https://colutius.github.io/libcolutius/\" >参考文档</a>", "md_README.html#autotoc_md1", null ],
+      [ "包含类", "md_README.html#autotoc_md2", null ],
+      [ "手动构建", "md_README.html#autotoc_md3", null ]
+    ] ],
     [ "类", "annotated.html", [
       [ "类列表", "annotated.html", "annotated_dup" ],
       [ "类索引", "classes.html", null ],
