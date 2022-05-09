@@ -1,6 +1,8 @@
 var hierarchy =
 [
     [ "QObject", null, [
-      [ "Message", "classMessage.html", null ]
+      [ "Channel", "classChannel.html", null ],
+      [ "Message", "classMessage.html", null ],
+      [ "Server", "classServer.html", null ]
     ] ]
 ];

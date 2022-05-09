@@ -47,7 +47,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Message_8cpp.html"
+"Channel_8cpp.html"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

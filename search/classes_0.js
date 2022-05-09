@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['message_0',['Message',['../classMessage.html',1,'']]]
+  ['channel_0',['Channel',['../classChannel.html',1,'']]]
 ];

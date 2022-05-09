@@ -1,4 +1,6 @@
 var annotated_dup =
 [
-    [ "Message", "classMessage.html", "classMessage" ]
+    [ "Channel", "classChannel.html", "classChannel" ],
+    [ "Message", "classMessage.html", "classMessage" ],
+    [ "Server", "classServer.html", "classServer" ]
 ];
