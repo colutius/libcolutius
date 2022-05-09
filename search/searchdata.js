@@ -1,10 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "clmrs~",
+  0: "cejkmnps~",
   1: "cms",
-  2: "cmrs",
+  2: "cms",
   3: "cms~",
-  4: "l"
+  4: "m",
+  5: "cejknp"
 };
 
 var indexSectionNames =
@@ -13,7 +14,8 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "pages"
+  4: "enums",
+  5: "enumvalues"
 };
 
 var indexSectionLabels =
@@ -22,6 +24,7 @@ var indexSectionLabels =
   1: "类",
   2: "文件",
   3: "函数",
-  4: "页"
+  4: "枚举",
+  5: "枚举值"
 };
 
