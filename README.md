@@ -2,6 +2,9 @@
 
 给colutius客户端编写的IRC核心库
 
+[![Doxygen](https://github.com/colutius/libcolutius/actions/workflows/Doxygen.yml/badge.svg)](https://github.com/colutius/libcolutius/actions/workflows/Doxygen.yml)
+[![CI](https://github.com/colutius/libcolutius/actions/workflows/CI.yml/badge.svg)](https://github.com/colutius/libcolutius/actions/workflows/CI.yml)
+
 ## [参考文档](https://colutius.github.io/libcolutius/)
 
 ## 包含类
