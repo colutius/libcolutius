@@ -119,11 +119,13 @@ $(document).ready(function(){initNavTree('Message_8h_source.html',''); initResiz
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classMessage.html#aefaeef0caed942ae0920bea838065b0a">   40</a></span>    <a class="code hl_function" href="classMessage.html#aefaeef0caed942ae0920bea838065b0a">~Message</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMessage.html#ad6cc31e67b950ead5be65fa458c58322">setRawMsg</a>(QString msg);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    QString rawMsg;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    QString <a class="code hl_function" href="classMessage.html#a68aef9a3611426c332608c6bda53ad8d">getRawMsg</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    QString rawMsg;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>};</div>
 <div class="ttc" id="aclassMessage_html"><div class="ttname"><a href="classMessage.html">Message</a></div><div class="ttdoc">IRC消息类 将原始数据传入其中，由该类对接收到的消息进行解析、分类、格式化</div><div class="ttdef"><b>Definition:</b> Message.h:19</div></div>
+<div class="ttc" id="aclassMessage_html_a68aef9a3611426c332608c6bda53ad8d"><div class="ttname"><a href="classMessage.html#a68aef9a3611426c332608c6bda53ad8d">Message::getRawMsg</a></div><div class="ttdeci">QString getRawMsg()</div><div class="ttdoc">获取原始数据</div><div class="ttdef"><b>Definition:</b> Message.cpp:47</div></div>
 <div class="ttc" id="aclassMessage_html_a842a26650926c06d1a9b02fece83e790"><div class="ttname"><a href="classMessage.html#a842a26650926c06d1a9b02fece83e790">Message::msgType</a></div><div class="ttdeci">msgType</div><div class="ttdoc">消息类型</div><div class="ttdef"><b>Definition:</b> Message.h:27</div></div>
 <div class="ttc" id="aclassMessage_html_a842a26650926c06d1a9b02fece83e790a78cdb0df550de9edcdb31b6674494c6d"><div class="ttname"><a href="classMessage.html#a842a26650926c06d1a9b02fece83e790a78cdb0df550de9edcdb31b6674494c6d">Message::Join</a></div><div class="ttdeci">@ Join</div><div class="ttdoc">加入信息</div><div class="ttdef"><b>Definition:</b> Message.h:31</div></div>
 <div class="ttc" id="aclassMessage_html_a842a26650926c06d1a9b02fece83e790a7fd9de074f0c9c03ce0850b175ced457"><div class="ttname"><a href="classMessage.html#a842a26650926c06d1a9b02fece83e790a7fd9de074f0c9c03ce0850b175ced457">Message::Channel</a></div><div class="ttdeci">@ Channel</div><div class="ttdoc">频道消息</div><div class="ttdef"><b>Definition:</b> Message.h:36</div></div>

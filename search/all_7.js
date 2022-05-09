@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['server_0',['Server',['../classServer.html',1,'Server'],['../classServer.html#aaf98d5194faee831c6340cc736b9b879',1,'Server::Server()']]],
-  ['server_2ecpp_1',['Server.cpp',['../Server_8cpp.html',1,'']]],
-  ['server_2eh_2',['Server.h',['../Server_8h.html',1,'']]],
-  ['setrawmsg_3',['setRawMsg',['../classMessage.html#ad6cc31e67b950ead5be65fa458c58322',1,'Message']]]
+  ['ping_0',['Ping',['../classMessage.html#a842a26650926c06d1a9b02fece83e790ab4597cf7e33d644159227cf13ad7d051',1,'Message']]],
+  ['private_1',['Private',['../classMessage.html#a842a26650926c06d1a9b02fece83e790ace272047fc33bcc12ed0ad0eefc14e69',1,'Message']]]
 ];

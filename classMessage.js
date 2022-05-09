@@ -14,5 +14,6 @@ var classMessage =
     [ "Message", "classMessage.html#ab4d7d907d66174179b05b244190ffb07", null ],
     [ "Message", "classMessage.html#ae8a59e89529cefe36a393cf04be4e4bc", null ],
     [ "~Message", "classMessage.html#aefaeef0caed942ae0920bea838065b0a", null ],
+    [ "getRawMsg", "classMessage.html#a68aef9a3611426c332608c6bda53ad8d", null ],
     [ "setRawMsg", "classMessage.html#ad6cc31e67b950ead5be65fa458c58322", null ]
 ];
