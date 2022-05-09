@@ -36,12 +36,14 @@ jobs:
         run: |
           mkdir build
           cd build
+          ls
           cmake ..
           make
+
       #5上传artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: libcolutius
-          path: ./lib
+          path: /home/runner/work/libcolutius/libcolutius/build/lib
           if-no-files-found: error
