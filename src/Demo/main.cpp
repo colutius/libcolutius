@@ -1,8 +1,10 @@
-#include "Message.h"
+#include <Message.h>
 #include <QCoreApplication>
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    Message::sendMsg(" by ambition_echo");
+    auto *msg = new Message();
+    // msg->setRawMsg("hello?");
+    qDebug() << msg->getRawMsg();
 }

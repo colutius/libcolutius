@@ -40,6 +40,7 @@ class Message : public QObject
     ~Message() override;
 
     void setRawMsg(QString msg);
+    QString getRawMsg();
 
   private:
     QString rawMsg;

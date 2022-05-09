@@ -39,3 +39,20 @@ void Message::setRawMsg(QString msg)
 {
     this->rawMsg = msg;
 }
+/**
+ * @brief 获取原始数据
+ * @return 返回消息的原始数据，若没有设置原始数据，
+ * 则返回"[libcolutius-message]->ERROR!"
+ */
+QString Message::getRawMsg()
+{
+    if (!this->rawMsg.isEmpty())
+    {
+        return this->rawMsg;
+    }
+    else
+    {
+        qDebug() << "未设置rawMsg！";
+        return "[libcolutius-message]->ERROR!";
+    }
+}
