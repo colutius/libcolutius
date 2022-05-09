@@ -14,6 +14,8 @@ set(REQUIRED_LIBS_QUALIFIED
         Qt6::Widgets
         Qt6::Network
         #我的动态库
+        colutius-server
+        colutius-channel
         colutius-message
         )
 
