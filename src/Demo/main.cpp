@@ -4,5 +4,5 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    Message::sendMsg();
+    Message::sendMsg(" by ambition_echo");
 }
