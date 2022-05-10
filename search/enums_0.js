@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['msgtype_0',['msgType',['../classMessage.html#a842a26650926c06d1a9b02fece83e790',1,'Message']]]
+  ['msgsender_0',['MsgSender',['../classMessage.html#a9bace324cb055566de1e5622c61867a4',1,'Message']]],
+  ['msgtype_1',['MsgType',['../classMessage.html#a841594d878321cc0a31b648ea22f2ba3',1,'Message']]]
 ];
