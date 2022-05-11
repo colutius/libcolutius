@@ -7,7 +7,6 @@ var classMessage =
     ] ],
     [ "MsgType", "classMessage.html#a841594d878321cc0a31b648ea22f2ba3", [
       [ "Ping", "classMessage.html#a841594d878321cc0a31b648ea22f2ba3ab4597cf7e33d644159227cf13ad7d051", null ],
-      [ "Pong", "classMessage.html#a841594d878321cc0a31b648ea22f2ba3a5de568ed574fdb2b16fb6c18918e4507", null ],
       [ "Error", "classMessage.html#a841594d878321cc0a31b648ea22f2ba3afda0e07984263e86fb4d8dc55c74b69f", null ],
       [ "Notice", "classMessage.html#a841594d878321cc0a31b648ea22f2ba3ad8306a69fa50f815d9a6322bd8cb67ca", null ],
       [ "Join", "classMessage.html#a841594d878321cc0a31b648ea22f2ba3a78cdb0df550de9edcdb31b6674494c6d", null ],
@@ -21,9 +20,11 @@ var classMessage =
     [ "Message", "classMessage.html#ab4d7d907d66174179b05b244190ffb07", null ],
     [ "Message", "classMessage.html#a7b7ebcaa3a6fe63fc19d7e26e33c2c66", null ],
     [ "~Message", "classMessage.html#aefaeef0caed942ae0920bea838065b0a", null ],
+    [ "getMainMsg", "classMessage.html#a73d73c688a8514e7c67286ef0ec91c1f", null ],
     [ "getMsgSender", "classMessage.html#af354a28e36bd03ef37c91e50a1c4735b", null ],
     [ "getMsgType", "classMessage.html#a280034d2797d6bc9ed31ee198472fea8", null ],
     [ "getRawMsg", "classMessage.html#a68aef9a3611426c332608c6bda53ad8d", null ],
-    [ "setMsgSendr", "classMessage.html#a23010484e5a1e8bf6d44d20dafd67d03", null ],
+    [ "parse", "classMessage.html#a0d00f328a94b51a4482826525be45eac", null ],
+    [ "setMsgSender", "classMessage.html#ac0005a96a3f1fbb2ab13ecfcb6c0e8d8", null ],
     [ "setRawMsg", "classMessage.html#ad6cc31e67b950ead5be65fa458c58322", null ]
 ];
