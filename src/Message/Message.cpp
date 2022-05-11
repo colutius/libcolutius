@@ -20,12 +20,14 @@ Message::Message(QObject *parent) : QObject(parent)
 /**
  * @brief 有参构造函数
  * @param msg 接收到的原始数据或即将发送的原始数据
- * @param sender 消息发送者,默认为User,注意:用户发送的消息必须传入Owner或手动设置为Owner
+ * @param sender 消息发送者,默认为User,
+ * 如不确定消息发送者，默认即可
+ * 注意:用户发送的消息必须传入Owner或手动设置为Owner
  * @param parent 默认为nullptr
  */
 Message::Message(QString msg, Message::MsgSender sender, QObject *parent) : QObject(parent)
 {
-    this->setMsgSendr(sender);
+    this->setMsgSender(sender);
     this->setRawMsg(msg);
 }
 /**
@@ -77,7 +79,7 @@ Message::MsgType Message::getMsgType()
  * @brief 设置消息的发送者
  * @param sender 选择msgSender中的枚举值
  */
-void Message::setMsgSendr(Message::MsgSender sender)
+void Message::setMsgSender(Message::MsgSender sender)
 {
     this->_sender = sender;
     if (this->getMsgSender() == MsgSender::Owner)
@@ -94,8 +96,8 @@ Message::MsgSender Message::getMsgSender()
     return this->_sender;
 }
 /**
- * @brief 解析消息原始数据
- * 不需要手动调用，在设置了原始数据之后会自动调用
+ * @brief 解析消息原始数据，
+ * 一般情况下，不需要手动调用，在设置了原始数据之后会自动调用
  */
 void Message::parse()
 {
@@ -110,11 +112,11 @@ void Message::parse()
         int pos = 0;
         if (isUser.validate(buf[0], pos) == QValidator::Acceptable)
         {
-            this->setMsgSendr(MsgSender::User);
+            this->setMsgSender(MsgSender::User);
         }
         else
         {
-            this->setMsgSendr(MsgSender::Server);
+            this->setMsgSender(MsgSender::Server);
         }
     }
     switch (this->_sender)
@@ -128,21 +130,37 @@ void Message::parse()
         else
         {
             buf = this->getRawMsg().split(" ");
+            // PING消息
             if (buf[0] == "PING")
             {
                 this->setMsgType(MsgType::Ping);
+                this->parseMainMsg(this->getRawMsg(), 1);
                 break;
             }
+            // ERROR消息
             if (buf[0] == "ERROR")
             {
                 this->setMsgType(MsgType::Error);
+                this->parseMainMsg(this->getRawMsg(), 1);
                 break;
             }
             if (buf.length() > 1)
             {
+                //判断是否为数字指令
+                QRegularExpression num("[0-9].*");
+                QRegularExpressionValidator isNum(num);
+                int pos = 0;
+                //数字指令
+                if (isNum.validate(buf[1], pos) == QValidator::Acceptable)
+                {
+                    this->parseMainMsg(this->getRawMsg(), 2);
+                    // TODO 分别解析不同的数字
+                }
+                // NOTICE消息
                 if (buf[1] == "NOTICE")
                 {
                     this->setMsgType(MsgType::Notice);
+                    this->parseMainMsg(this->getRawMsg(), 2);
                     break;
                 }
             }
@@ -152,6 +170,7 @@ void Message::parse()
         if (buf[1] == "JOIN")
         {
             this->setMsgType(MsgType::Join);
+            this->parseMainMsg(this->getRawMsg(), 2);
             break;
         }
         if (buf[1] == "PRIVMSG")
@@ -159,11 +178,13 @@ void Message::parse()
             if (buf[2][0] == '#')
             {
                 this->setMsgType(MsgType::Channel);
+                this->parseMainMsg(this->getRawMsg(), 3);
                 break;
             }
             else
             {
                 this->setMsgType(MsgType::Private);
+                this->parseMainMsg(this->getRawMsg(), 3);
                 break;
             }
         }
@@ -188,4 +209,38 @@ void Message::parse()
             }
         }
     }
+}
+/**
+ * @brief 获取一条消息的主体部分
+ * @param msg 消息原始数据
+ * @param index 将消息以空格分隔后，主题消息头所在的位置
+ * @return
+ */
+void Message::parseMainMsg(QString msg, int index)
+{
+    QStringList buf = msg.split(" ");
+    if (index < 0 || index >= buf.length())
+    {
+        qDebug() << "索引不合法";
+    }
+    //去除头部的冒号
+    if (buf[index][0] == ':')
+    {
+        buf[index] = buf[index].remove(0, 1);
+    }
+    QString mainMsg = "";
+    for (int i = index; i < buf.length(); i++)
+    {
+        mainMsg += buf[i] + " ";
+    }
+    this->_mainMsg = mainMsg;
+}
+QString Message::getMainMsg()
+{
+    if (this->_mainMsg.isEmpty())
+    {
+        qDebug() << "主体信息为空";
+        return "";
+    }
+    return this->_mainMsg;
 }

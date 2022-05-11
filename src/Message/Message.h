@@ -27,7 +27,6 @@ class Message : public QObject
     enum MsgType
     {
         Ping = 1,     ///<服务器定期Ping消息
-        Pong = 2,     ///<返回给服务器的Pong消息
         Error = 3,    ///<报错信息
         Notice = 4,   ///<注意信息
         Join = 5,     ///<加入信息
@@ -51,17 +50,19 @@ class Message : public QObject
     Message(QString msg, MsgSender sender = MsgSender::User, QObject *parent = nullptr);
     ~Message() override;
 
-    void setRawMsg(QString msg);        //设置原始数据
-    QString getRawMsg();                //获取原始数据
-    MsgType getMsgType();               //获取消息类型
-    void setMsgSendr(MsgSender sender); //设置消息发送者
-    MsgSender getMsgSender();           //获取消息发送者
+    void setRawMsg(QString msg);         //设置原始数据
+    QString getRawMsg();                 //获取原始数据
+    MsgType getMsgType();                //获取消息类型
+    void setMsgSender(MsgSender sender); //设置消息发送者
+    MsgSender getMsgSender();            //获取消息发送者
+    void parse();                        //解析消息原始数据
+    QString getMainMsg();                //获取主体信息
 
   private:
-    void setMsgType(MsgType type); //设置消息类型
-    void parse();                  //解析消息原始数据
-    MsgType _type;                 //消息类型
-    MsgSender _sender;             //消息发送者
-    QString _rawMsg;               //原始数据
-    QString _mainMsg;              //消息主体信息
+    void setMsgType(MsgType type);             //设置消息类型
+    void parseMainMsg(QString msg, int index); //解析消息的主要信息
+    MsgType _type;                             //消息类型
+    MsgSender _sender;                         //消息发送者
+    QString _rawMsg;                           //原始数据
+    QString _mainMsg;                          //消息主体信息
 };

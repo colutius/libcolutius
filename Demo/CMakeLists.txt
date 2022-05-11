@@ -21,7 +21,9 @@ set(REQUIRED_LIBS_QUALIFIED
 
 #设置头文件路径
 include_directories(
-        ${PROJECT_SOURCE_DIR}/../Message
+        ${PROJECT_SOURCE_DIR}/../src/Message
+        ${PROJECT_SOURCE_DIR}/../src/Channel
+        ${PROJECT_SOURCE_DIR}/../src/Server
 )
 
 add_executable(${PROJECT_NAME}

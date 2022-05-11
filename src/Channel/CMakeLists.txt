@@ -18,4 +18,4 @@ add_library(${PROJECT_NAME} SHARED
         )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-
+file(COPY ${PROJECT_SOURCE_DIR}/Channel.h DESTINATION ${PROJECT_BINARY_DIR}/../../include)
