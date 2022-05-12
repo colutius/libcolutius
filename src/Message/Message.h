@@ -12,6 +12,7 @@
 #include <QDebug>
 #include <QObject>
 #include <QRegularExpression>
+#include <QTime>
 #include <QtGui/QValidator>
 /**
  * @brief IRC消息类
@@ -26,6 +27,7 @@ class Message : public QObject
      */
     enum MsgType
     {
+        None = 0,     ///<未知消息
         Ping = 1,     ///<服务器定期Ping消息
         Error = 3,    ///<报错信息
         Notice = 4,   ///<注意信息
@@ -35,7 +37,6 @@ class Message : public QObject
         Num = 8,      ///<数字类信息，相当于状态码
         Private = 9,  ///<私信消息
         Channel = 10, ///<正常频道消息
-        Own = 11,     ///<用户自己发送的消息
     };
     /**
      * @brief 消息发送者
@@ -57,12 +58,22 @@ class Message : public QObject
     MsgSender getMsgSender();            //获取消息发送者
     void parse();                        //解析消息原始数据
     QString getMainMsg();                //获取主体信息
+    void setMsgType(MsgType type);       //设置消息类型
+    void setNick(QString nick);          //设置消息发送者昵称
+    QString getChannel();                //获取频道名称
+    QString getNick();                   //获取发送者昵称
+    QString getIp();                     //获取发送者IP
 
   private:
-    void setMsgType(MsgType type);             //设置消息类型
+    void parseMsgSender(QString msg);          //解析消息发送者信息
     void parseMainMsg(QString msg, int index); //解析消息的主要信息
+    void setTime();                            //设置当前时间
     MsgType _type;                             //消息类型
     MsgSender _sender;                         //消息发送者
     QString _rawMsg;                           //原始数据
     QString _mainMsg;                          //消息主体信息
+    QString _channel;                          //消息发送到的频道
+    QString _nick;                             //消息发送者昵称
+    QString _ip;                               //消息发送者ip
+    QTime _msgTime;                            //消息发送/接收时间
 };

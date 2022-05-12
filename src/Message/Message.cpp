@@ -16,6 +16,7 @@
  */
 Message::Message(QObject *parent) : QObject(parent)
 {
+    this->setTime();
 }
 /**
  * @brief 有参构造函数
@@ -29,6 +30,7 @@ Message::Message(QString msg, Message::MsgSender sender, QObject *parent) : QObj
 {
     this->setMsgSender(sender);
     this->setRawMsg(msg);
+    this->setTime();
 }
 /**
  * @brief 默认析构函数
@@ -126,6 +128,7 @@ void Message::parse()
         buf = this->getRawMsg().split("\r\n");
         if (buf.length() > 1)
         {
+            // TODO 处理服务器的多行消息
         }
         else
         {
@@ -171,6 +174,7 @@ void Message::parse()
         {
             this->setMsgType(MsgType::Join);
             this->parseMainMsg(this->getRawMsg(), 2);
+            this->parseMsgSender(buf[0]);
             break;
         }
         if (buf[1] == "PRIVMSG")
@@ -178,13 +182,16 @@ void Message::parse()
             if (buf[2][0] == '#')
             {
                 this->setMsgType(MsgType::Channel);
+                this->_channel = buf[2];
                 this->parseMainMsg(this->getRawMsg(), 3);
+                this->parseMsgSender(buf[0]);
                 break;
             }
             else
             {
                 this->setMsgType(MsgType::Private);
                 this->parseMainMsg(this->getRawMsg(), 3);
+                this->parseMsgSender(buf[0]);
                 break;
             }
         }
@@ -192,19 +199,46 @@ void Message::parse()
     case Owner:
         if (buf[0][0] != '/')
         {
-            this->setMsgType(MsgType::Own);
+            //这里无法判断是频道消息还是私信消息，需要外部手动设置
+            this->_mainMsg = this->getRawMsg();
             break;
         }
         else
         {
             if (buf[0] == "/msg")
             {
-                this->setMsgType(MsgType::Own);
+                if (buf.length() < 3)
+                {
+                    qDebug() << "指令不合法";
+                    this->setMsgType(MsgType::None);
+                }
+                else
+                {
+                    if (buf[1][0] == '#')
+                    {
+                        this->setMsgType(MsgType::Channel);
+                        this->parseMainMsg(this->getRawMsg(), 2);
+                    }
+                    else
+                    {
+                        this->setMsgType(MsgType::Private);
+                        this->parseMainMsg(this->getRawMsg(), 2);
+                    }
+                }
                 break;
             }
             if (buf[0] == "/join")
             {
-                this->setMsgType(MsgType::Join);
+                if (buf.length() < 2)
+                {
+                    qDebug() << "指令不合法";
+                    this->setMsgType(MsgType::None);
+                }
+                else
+                {
+                    this->_channel = buf[1];
+                    this->setMsgType(MsgType::Join);
+                }
                 break;
             }
         }
@@ -214,7 +248,6 @@ void Message::parse()
  * @brief 获取一条消息的主体部分
  * @param msg 消息原始数据
  * @param index 将消息以空格分隔后，主题消息头所在的位置
- * @return
  */
 void Message::parseMainMsg(QString msg, int index)
 {
@@ -235,6 +268,10 @@ void Message::parseMainMsg(QString msg, int index)
     }
     this->_mainMsg = mainMsg;
 }
+/**
+ * @brief 获取消息主体信息
+ * @return 原始消息中去掉头部及指令之后最后真正有用的主体信息
+ */
 QString Message::getMainMsg()
 {
     if (this->_mainMsg.isEmpty())
@@ -243,4 +280,61 @@ QString Message::getMainMsg()
         return "";
     }
     return this->_mainMsg;
+}
+/**
+ * @brief 解析消息发送者信息
+ * @param msg 用户消息原始数据中空格分隔的第一部分
+ * 例如：colutius!~colutius@123.123 PRIVMSG #colutius :hello?
+ * 传入colutius!~colutius@123.123即可
+ */
+void Message::parseMsgSender(QString msg)
+{
+    QStringList buf = msg.split("!");
+    //去除头部冒号
+    if (buf[0][0] == ':')
+    {
+        buf[0] = buf[0].remove(0, 1);
+    }
+    this->_nick = buf[0];
+    buf = msg.split("@");
+    this->_ip = buf[1];
+}
+/**
+ * @brief 设置消息发送者昵称
+ * @param nick 消息发送者昵称
+ */
+void Message::setNick(QString nick)
+{
+    this->_nick = nick;
+}
+/**
+ * @brief 获取频道名
+ * @return 消息所在频道名
+ */
+QString Message::getChannel()
+{
+    return this->_channel;
+}
+/**
+ * @brief 获取消息发送者昵称
+ * @return 消息发送者昵称
+ */
+QString Message::getNick()
+{
+    return this->_nick;
+}
+/**
+ * @brief 获取消息发送者ip
+ * @return 消息发送者ip
+ */
+QString Message::getIp()
+{
+    return this->_ip;
+}
+/**
+ * @brief 设置消息发送/接收时间
+ */
+void Message::setTime()
+{
+    this->_msgTime = QTime::currentTime();
 }
