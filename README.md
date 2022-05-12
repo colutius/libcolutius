@@ -4,6 +4,7 @@
 
 [![Doxygen](https://github.com/colutius/libcolutius/actions/workflows/Doxygen.yml/badge.svg)](https://github.com/colutius/libcolutius/actions/workflows/Doxygen.yml)
 [![CI](https://github.com/colutius/libcolutius/actions/workflows/CI.yml/badge.svg)](https://github.com/colutius/libcolutius/actions/workflows/CI.yml)
+[![Backup](https://github.com/colutius/libcolutius/actions/workflows/Backup.yml/badge.svg)](https://github.com/colutius/libcolutius/actions/workflows/Backup.yml)
 [![LICENSE](https://img.shields.io/github/license/colutius/libcolutius)](https://github.com/colutius/libcolutius/blob/main/LICENSE)
 
 ## [参考文档](https://colutius.github.io/libcolutius/)

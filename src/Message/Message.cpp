@@ -10,8 +10,8 @@
  */
 #include "Message.h"
 /**
- * @brief 无参构造，采用这种构造方式之后，
- * 需要调用setRawMsg()和setMsgSender()手动设置其中的原始数据和消息发送者
+ * @brief 无参构造,采用这种构造方式之后，
+ * 需要调用`setRawMsg()`和setMsgSender()手动设置其中的原始数据和消息发送者
  * @param parent 默认为nullptr
  */
 Message::Message(QObject *parent) : QObject(parent)
@@ -158,6 +158,13 @@ void Message::parse()
                 {
                     this->parseMainMsg(this->getRawMsg(), 2);
                     // TODO 分别解析不同的数字
+                    switch (buf[1].toInt())
+                    {
+                    case 352:
+                        return;
+                    default:
+                        return;
+                    }
                 }
                 // NOTICE消息
                 if (buf[1] == "NOTICE")
