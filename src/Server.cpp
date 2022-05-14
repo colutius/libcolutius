@@ -9,7 +9,11 @@
  *
  */
 #include "Server.h"
-
+/**
+ * @brief 无参构造，
+ * 后续使用需要手动设置服务器host,port等参数
+ * @param parent 默认nullptr
+ */
 Server::Server(QObject *parent) : QObject(parent)
 {
     this->_tcpsocket = new QTcpSocket;
