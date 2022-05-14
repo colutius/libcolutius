@@ -28,7 +28,7 @@ jobs:
       - name: Doxygen Action
         # You may pin to the exact commit or the version.
         # uses: mattnotmitt/doxygen-action@cdd5472f8e48e141b89d2633c1ae72991a21cb6a
-        uses: mattnotmitt/doxygen-action@1.9.3
+        uses: mattnotmitt/doxygen-action@edge
       - name: GitHub Pages action
         # You may pin to the exact commit or the version.
         # uses: peaceiris/actions-gh-pages@bbdfb200618d235585ad98e965f4aafc39b4c501
