@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
 
-project(colutius-server LANGUAGES CXX)
+project(colutius LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
@@ -15,7 +15,11 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Network)
 add_library(${PROJECT_NAME} SHARED
         Server.cpp
         Server.h
+        Channel.cpp
+        Channel.h
+        Message.cpp
+        Message.h
         )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-file(COPY ${PROJECT_SOURCE_DIR}/Server.h DESTINATION ${PROJECT_BINARY_DIR}/../../include)
+file(COPY ${PROJECT_SOURCE_DIR}/Server.h DESTINATION ${PROJECT_BINARY_DIR}/../include)

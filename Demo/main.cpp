@@ -1,4 +1,4 @@
-#include <Message.h>
+#include "../src/Message.h"
 #include <QCoreApplication>
 
 int main(int argc, char *argv[])

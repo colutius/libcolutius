@@ -14,16 +14,12 @@ set(REQUIRED_LIBS_QUALIFIED
         Qt6::Widgets
         Qt6::Network
         #我的动态库
-        colutius-server
-        colutius-channel
-        colutius-message
+        colutius
         )
 
 #设置头文件路径
 include_directories(
-        ${PROJECT_SOURCE_DIR}/../src/Message
-        ${PROJECT_SOURCE_DIR}/../src/Channel
-        ${PROJECT_SOURCE_DIR}/../src/Server
+        ${PROJECT_SOURCE_DIR}/../src
 )
 
 add_executable(${PROJECT_NAME}

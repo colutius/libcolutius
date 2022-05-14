@@ -4,7 +4,5 @@ project(libcolutius LANGUAGES CXX)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 #添加子目录项目
-add_subdirectory(src/Server)
-add_subdirectory(src/Channel)
-add_subdirectory(src/Message)
+add_subdirectory(src)
 add_subdirectory(Demo)
