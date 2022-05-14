@@ -26,7 +26,7 @@ Message::Message(QObject *parent) : QObject(parent)
  * 注意:用户发送的消息必须传入Owner或手动设置为Owner
  * @param parent 默认为nullptr
  */
-Message::Message(QString msg, Message::MsgSender sender, QObject *parent) : QObject(parent)
+Message::Message(QString msg, Message::Sender sender, QObject *parent) : QObject(parent)
 {
     this->setMsgSender(sender);
     this->setRawMsg(msg);
@@ -65,7 +65,7 @@ QString Message::getRawMsg()
  * @brief 设置消息类型
  * @param type 选择msgType中的枚举值
  */
-void Message::setMsgType(Message::MsgType type)
+void Message::setMsgType(Message::Type type)
 {
     this->_type = type;
 }
@@ -73,7 +73,7 @@ void Message::setMsgType(Message::MsgType type)
  * @brief 获取此消息的类型
  * @return Message::MsgType类型的消息的类型
  */
-Message::MsgType Message::getMsgType()
+Message::Type Message::getMsgType()
 {
     return this->_type;
 }
@@ -81,10 +81,10 @@ Message::MsgType Message::getMsgType()
  * @brief 设置消息的发送者
  * @param sender 选择msgSender中的枚举值
  */
-void Message::setMsgSender(Message::MsgSender sender)
+void Message::setMsgSender(Message::Sender sender)
 {
     this->_sender = sender;
-    if (this->getMsgSender() == MsgSender::Owner)
+    if (this->getMsgSender() == Sender::Owner)
     {
         this->parse();
     }
@@ -93,7 +93,7 @@ void Message::setMsgSender(Message::MsgSender sender)
  * @brief 获取此消息的发送者
  * @return Message::MsgSender类型的消息发送者
  */
-Message::MsgSender Message::getMsgSender()
+Message::Sender Message::getMsgSender()
 {
     return this->_sender;
 }
@@ -114,11 +114,11 @@ void Message::parse()
         int pos = 0;
         if (isUser.validate(buf[0], pos) == QValidator::Acceptable)
         {
-            this->setMsgSender(MsgSender::User);
+            this->setMsgSender(Sender::User);
         }
         else
         {
-            this->setMsgSender(MsgSender::Server);
+            this->setMsgSender(Sender::Server);
         }
     }
     switch (this->_sender)
@@ -136,14 +136,14 @@ void Message::parse()
             // PING消息
             if (buf[0] == "PING")
             {
-                this->setMsgType(MsgType::Ping);
+                this->setMsgType(Type::Ping);
                 this->parseMainMsg(this->getRawMsg(), 1);
                 break;
             }
             // ERROR消息
             if (buf[0] == "ERROR")
             {
-                this->setMsgType(MsgType::Error);
+                this->setMsgType(Type::Error);
                 this->parseMainMsg(this->getRawMsg(), 1);
                 break;
             }
@@ -169,7 +169,7 @@ void Message::parse()
                 // NOTICE消息
                 if (buf[1] == "NOTICE")
                 {
-                    this->setMsgType(MsgType::Notice);
+                    this->setMsgType(Type::Notice);
                     this->parseMainMsg(this->getRawMsg(), 2);
                     break;
                 }
@@ -179,7 +179,7 @@ void Message::parse()
     case User:
         if (buf[1] == "JOIN")
         {
-            this->setMsgType(MsgType::Join);
+            this->setMsgType(Type::Join);
             this->parseMainMsg(this->getRawMsg(), 2);
             this->parseMsgSender(buf[0]);
             break;
@@ -188,7 +188,7 @@ void Message::parse()
         {
             if (buf[2][0] == '#')
             {
-                this->setMsgType(MsgType::Channel);
+                this->setMsgType(Type::Channel);
                 this->_channel = buf[2];
                 this->parseMainMsg(this->getRawMsg(), 3);
                 this->parseMsgSender(buf[0]);
@@ -196,7 +196,7 @@ void Message::parse()
             }
             else
             {
-                this->setMsgType(MsgType::Private);
+                this->setMsgType(Type::Private);
                 this->parseMainMsg(this->getRawMsg(), 3);
                 this->parseMsgSender(buf[0]);
                 break;
@@ -217,18 +217,18 @@ void Message::parse()
                 if (buf.length() < 3)
                 {
                     qDebug() << "指令不合法";
-                    this->setMsgType(MsgType::None);
+                    this->setMsgType(Type::None);
                 }
                 else
                 {
                     if (buf[1][0] == '#')
                     {
-                        this->setMsgType(MsgType::Channel);
+                        this->setMsgType(Type::Channel);
                         this->parseMainMsg(this->getRawMsg(), 2);
                     }
                     else
                     {
-                        this->setMsgType(MsgType::Private);
+                        this->setMsgType(Type::Private);
                         this->parseMainMsg(this->getRawMsg(), 2);
                     }
                 }
@@ -239,12 +239,12 @@ void Message::parse()
                 if (buf.length() < 2)
                 {
                     qDebug() << "指令不合法";
-                    this->setMsgType(MsgType::None);
+                    this->setMsgType(Type::None);
                 }
                 else
                 {
                     this->_channel = buf[1];
-                    this->setMsgType(MsgType::Join);
+                    this->setMsgType(Type::Join);
                 }
                 break;
             }

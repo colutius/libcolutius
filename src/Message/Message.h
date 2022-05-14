@@ -25,7 +25,7 @@ class Message : public QObject
     /**
      * @brief 消息类型
      */
-    enum MsgType
+    enum Type
     {
         None = 0,     ///<未知消息
         Ping = 1,     ///<服务器定期Ping消息
@@ -41,35 +41,35 @@ class Message : public QObject
     /**
      * @brief 消息发送者
      */
-    enum MsgSender
+    enum Sender
     {
         Server = 1, ///<服务器发送的消息
         User = 2,   ///<其他用户发送的消息
         Owner = 3,  ///<用户自己发送的消息
     };
     explicit Message(QObject *parent = nullptr);
-    Message(QString msg, MsgSender sender = MsgSender::User, QObject *parent = nullptr);
+    Message(QString msg, Sender sender = Sender::User, QObject *parent = nullptr);
     ~Message() override;
 
-    void setRawMsg(QString msg);         //设置原始数据
-    QString getRawMsg();                 //获取原始数据
-    MsgType getMsgType();                //获取消息类型
-    void setMsgSender(MsgSender sender); //设置消息发送者
-    MsgSender getMsgSender();            //获取消息发送者
-    void parse();                        //解析消息原始数据
-    QString getMainMsg();                //获取主体信息
-    void setMsgType(MsgType type);       //设置消息类型
-    void setNick(QString nick);          //设置消息发送者昵称
-    QString getChannel();                //获取频道名称
-    QString getNick();                   //获取发送者昵称
-    QString getIp();                     //获取发送者IP
+    void setRawMsg(QString msg);      //设置原始数据
+    QString getRawMsg();              //获取原始数据
+    Type getMsgType();                //获取消息类型
+    void setMsgSender(Sender sender); //设置消息发送者
+    Sender getMsgSender();            //获取消息发送者
+    void parse();                     //解析消息原始数据
+    QString getMainMsg();             //获取主体信息
+    void setMsgType(Type type);       //设置消息类型
+    void setNick(QString nick);       //设置消息发送者昵称
+    QString getChannel();             //获取频道名称
+    QString getNick();                //获取发送者昵称
+    QString getIp();                  //获取发送者IP
 
   private:
     void parseMsgSender(QString msg);          //解析消息发送者信息
     void parseMainMsg(QString msg, int index); //解析消息的主要信息
     void setTime();                            //设置当前时间
-    MsgType _type;                             //消息类型
-    MsgSender _sender;                         //消息发送者
+    Type _type;                                //消息类型
+    Sender _sender;                            //消息发送者
     QString _rawMsg;                           //原始数据
     QString _mainMsg;                          //消息主体信息
     QString _channel;                          //消息发送到的频道
