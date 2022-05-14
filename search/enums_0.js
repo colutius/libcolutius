@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['msgsender_0',['MsgSender',['../classMessage.html#a9bace324cb055566de1e5622c61867a4',1,'Message']]],
-  ['msgtype_1',['MsgType',['../classMessage.html#a841594d878321cc0a31b648ea22f2ba3',1,'Message']]]
+  ['sender_0',['Sender',['../classMessage.html#a1f1da61616045ef45234ae6bf1f13cfd',1,'Message']]],
+  ['status_1',['Status',['../classServer.html#a7755fd3a2ea35552d1dfd2c1a714ea47',1,'Server']]]
 ];

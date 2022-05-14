@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kick_0',['Kick',['../classMessage.html#a841594d878321cc0a31b648ea22f2ba3ae84707f71527ec2711cf514880b0acb9',1,'Message']]]
+  ['join_0',['Join',['../classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2ba78cdb0df550de9edcdb31b6674494c6d',1,'Message']]]
 ];

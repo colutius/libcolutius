@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['_7echannel_0',['~Channel',['../classChannel.html#aee8f50152fdf71d78eeb5d8ce82eced7',1,'Channel']]],
-  ['_7emessage_1',['~Message',['../classMessage.html#aefaeef0caed942ae0920bea838065b0a',1,'Message']]],
-  ['_7eserver_2',['~Server',['../classServer.html#af575d2e7efe3b7130dcbffc2c163f5e6',1,'Server']]]
+  ['tcp_0',['Tcp',['../classServer.html#a6aab5c46b9dc18c6bd70c46f5bffbb86a792fecb17ec90d0765a20842dedc2399',1,'Server']]],
+  ['type_1',['Type',['../classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2b',1,'Message::Type()'],['../classServer.html#a6aab5c46b9dc18c6bd70c46f5bffbb86',1,'Server::Type()']]]
 ];

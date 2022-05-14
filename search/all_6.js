@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['nick_0',['Nick',['../classMessage.html#a841594d878321cc0a31b648ea22f2ba3ada61946ceda894152a4c903bc5e243c6',1,'Message']]],
-  ['none_1',['None',['../classMessage.html#a841594d878321cc0a31b648ea22f2ba3a824daf8c4b37888639211f3b023c526e',1,'Message']]],
-  ['notice_2',['Notice',['../classMessage.html#a841594d878321cc0a31b648ea22f2ba3ad8306a69fa50f815d9a6322bd8cb67ca',1,'Message']]],
-  ['num_3',['Num',['../classMessage.html#a841594d878321cc0a31b648ea22f2ba3aad24b154eb38edd0253c6fcb4a489306',1,'Message']]]
+  ['message_0',['Message',['../classMessage.html',1,'Message'],['../classMessage.html#ab4d7d907d66174179b05b244190ffb07',1,'Message::Message(QObject *parent=nullptr)'],['../classMessage.html#a82778c145082141c56d2638b9df38cdd',1,'Message::Message(QString msg, Sender sender=Sender::User, QObject *parent=nullptr)']]],
+  ['message_2ecpp_1',['Message.cpp',['../Message_8cpp.html',1,'']]],
+  ['message_2eh_2',['Message.h',['../Message_8h.html',1,'']]]
 ];
