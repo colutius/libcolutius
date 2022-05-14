@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['message_0',['Message',['../classMessage.html#ab4d7d907d66174179b05b244190ffb07',1,'Message::Message(QObject *parent=nullptr)'],['../classMessage.html#a82778c145082141c56d2638b9df38cdd',1,'Message::Message(QString msg, Sender sender=Sender::User, QObject *parent=nullptr)']]]
+  ['login_0',['login',['../classServer.html#ae7a5e86a75996f403293f96d6e8f8778',1,'Server']]]
 ];

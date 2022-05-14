@@ -12,5 +12,12 @@ var classServer =
     [ "~Server", "classServer.html#af575d2e7efe3b7130dcbffc2c163f5e6", null ],
     [ "connectedFail", "classServer.html#a464b91af7a6f43720188c5d933555956", null ],
     [ "connectedSuccess", "classServer.html#ac35815eece1d0fc12d94fbdf7ec9cf0a", null ],
-    [ "disconnected", "classServer.html#a66e7b75873e4b75cdbf08acc30907338", null ]
+    [ "disconnected", "classServer.html#a66e7b75873e4b75cdbf08acc30907338", null ],
+    [ "login", "classServer.html#ae7a5e86a75996f403293f96d6e8f8778", null ],
+    [ "setHost", "classServer.html#ae6dc4ea36f3241a9d8386fc9950f0ec0", null ],
+    [ "setNick", "classServer.html#a81761018f1785c7898cc5ec75a320efa", null ],
+    [ "setPasswd", "classServer.html#a5f50d815956429be5301d8efb45fd299", null ],
+    [ "setPort", "classServer.html#a66ee7ec1cc836895608a4e3c22255dd8", null ],
+    [ "setServerInfo", "classServer.html#a4f3d6fc99da3b13885fdd6f2f1fefe36", null ],
+    [ "setUser", "classServer.html#ab9b84f45133c318471200adde3e7ccbb", null ]
 ];
