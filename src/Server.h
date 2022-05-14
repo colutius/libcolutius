@@ -11,8 +11,8 @@
 #pragma once
 #include <QDebug>
 #include <QObject>
-#include <QtNetwork/QSslSocket>
-#include <QtNetwork/QTcpSocket>
+#include <QSslSocket>
+#include <QTcpSocket>
 /**
  * @brief IRC服务器类
  *
