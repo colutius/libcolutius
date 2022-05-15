@@ -13,8 +13,6 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          disable_web_page_preview: true
-          format: markdown
           message: |
             👇新的提交👇
 
@@ -24,6 +22,8 @@ jobs:
 
             📦仓库: ${{ github.repository }}
 
-            👀查看更改: [[commit信息]](https://github.com/${{ github.repository }}/commit/${{github.sha}})
+            👀查看更改: [commit信息](https://github.com/${{ github.repository }}/commit/${{github.sha}})
 
             🗓每日一言: ${{ env.YIYAN }}
+          format: markdown
+          disable_web_page_preview: true
