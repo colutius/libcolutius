@@ -8,4 +8,6 @@ jobs:
       - name: get yiyan
         run: |
           echo "YIYAN=\"$(curl v1.hitokoto.cn | jq -r .hitokoto)\"" >> $GITHUB_ENV
+      - name: use
+        run: |
           echo ${{ env.YIYAN }}
