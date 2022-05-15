@@ -7,12 +7,14 @@ jobs:
     steps:
       - name: get yiyan
         run: |
-          echo "YIYAN=$(curl https://v1.hitokoto.cn | jq -r .hitokoto)" >> $GITHUB_ENV
+          echo "YIYAN=$(curl 'https://v1.hitokoto.cn?c=a&c=d&c=i&c=j&c=k' | jq -r .hitokoto)" >> $GITHUB_ENV
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
+          disable_web_page_preview: true
+          format: markdown
           message: |
             👇新的提交👇
 
@@ -22,6 +24,6 @@ jobs:
 
             📦仓库: ${{ github.repository }}
 
-            👀查看更改: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            👀查看更改: [[commit信息]](https://github.com/${{ github.repository }}/commit/${{github.sha}})
 
             🗓每日一言: ${{ env.YIYAN }}
