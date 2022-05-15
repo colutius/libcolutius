@@ -15,10 +15,12 @@ var classServer =
     [ "login", "classServer.html#ae7a5e86a75996f403293f96d6e8f8778", null ],
     [ "loginFail", "classServer.html#ad9fb2dd8378779e1d83febada00c73a4", null ],
     [ "loginSuccess", "classServer.html#a2b52f2df0d2a9c55f9152ca85e1dbcf7", null ],
-    [ "setHost", "classServer.html#ae6dc4ea36f3241a9d8386fc9950f0ec0", null ],
-    [ "setNick", "classServer.html#a81761018f1785c7898cc5ec75a320efa", null ],
-    [ "setPasswd", "classServer.html#a5f50d815956429be5301d8efb45fd299", null ],
-    [ "setPort", "classServer.html#a66ee7ec1cc836895608a4e3c22255dd8", null ],
-    [ "setServerInfo", "classServer.html#a4f3d6fc99da3b13885fdd6f2f1fefe36", null ],
-    [ "setUser", "classServer.html#ab9b84f45133c318471200adde3e7ccbb", null ]
+    [ "networkError", "classServer.html#aa41860d4665f38917ee939bd5b7b359f", null ],
+    [ "networkOk", "classServer.html#a3d6f1ef043956f0099e94d0be046b543", null ],
+    [ "receiveData", "classServer.html#a7f1ec52f8b76d14574950a1bfe7d7033", null ],
+    [ "setHost", "classServer.html#a832a3e22d4407c325f8abfa43ff44c6c", null ],
+    [ "setNick", "classServer.html#a9a2e247ca482dec0ea081b2e5a42177e", null ],
+    [ "setPasswd", "classServer.html#a36e8f6fe7bdcbbd29b5d5de6b559418a", null ],
+    [ "setPort", "classServer.html#a477fef3ccc9b71a29d2254cc98e85480", null ],
+    [ "setUser", "classServer.html#a5d4b86dce9a5811f9e9a3bfaef305736", null ]
 ];

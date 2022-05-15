@@ -134,6 +134,12 @@ Public 类型</h2></td></tr>
 <tr class="memitem:a66e7b75873e4b75cdbf08acc30907338"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a66e7b75873e4b75cdbf08acc30907338">disconnected</a> ()</td></tr>
 <tr class="memdesc:a66e7b75873e4b75cdbf08acc30907338"><td class="mdescLeft">&#160;</td><td class="mdescRight">服务器断开连接  <a href="classServer.html#a66e7b75873e4b75cdbf08acc30907338">更多...</a><br /></td></tr>
 <tr class="separator:a66e7b75873e4b75cdbf08acc30907338"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa41860d4665f38917ee939bd5b7b359f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#aa41860d4665f38917ee939bd5b7b359f">networkError</a> ()</td></tr>
+<tr class="memdesc:aa41860d4665f38917ee939bd5b7b359f"><td class="mdescLeft">&#160;</td><td class="mdescRight">网络未连接  <a href="classServer.html#aa41860d4665f38917ee939bd5b7b359f">更多...</a><br /></td></tr>
+<tr class="separator:aa41860d4665f38917ee939bd5b7b359f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d6f1ef043956f0099e94d0be046b543"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a3d6f1ef043956f0099e94d0be046b543">networkOk</a> ()</td></tr>
+<tr class="memdesc:a3d6f1ef043956f0099e94d0be046b543"><td class="mdescLeft">&#160;</td><td class="mdescRight">网络已连接  <a href="classServer.html#a3d6f1ef043956f0099e94d0be046b543">更多...</a><br /></td></tr>
+<tr class="separator:a3d6f1ef043956f0099e94d0be046b543"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
@@ -141,6 +147,7 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:aaf98d5194faee831c6340cc736b9b879"><td class="mdescLeft">&#160;</td><td class="mdescRight">无参构造， 后续使用需要手动设置服务器host,port等参数  <a href="classServer.html#aaf98d5194faee831c6340cc736b9b879">更多...</a><br /></td></tr>
 <tr class="separator:aaf98d5194faee831c6340cc736b9b879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3ba890f407638bcc814b302687c1486"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#ac3ba890f407638bcc814b302687c1486">Server</a> (<a class="el" href="classServer.html#a6aab5c46b9dc18c6bd70c46f5bffbb86">Type</a> type, QObject *parent=nullptr)</td></tr>
+<tr class="memdesc:ac3ba890f407638bcc814b302687c1486"><td class="mdescLeft">&#160;</td><td class="mdescRight">有参构造  <a href="classServer.html#ac3ba890f407638bcc814b302687c1486">更多...</a><br /></td></tr>
 <tr class="separator:ac3ba890f407638bcc814b302687c1486"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af575d2e7efe3b7130dcbffc2c163f5e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#af575d2e7efe3b7130dcbffc2c163f5e6">~Server</a> () override</td></tr>
 <tr class="memdesc:af575d2e7efe3b7130dcbffc2c163f5e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认析构函数  <a href="classServer.html#af575d2e7efe3b7130dcbffc2c163f5e6">更多...</a><br /></td></tr>
@@ -148,18 +155,19 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:ae7a5e86a75996f403293f96d6e8f8778"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#ae7a5e86a75996f403293f96d6e8f8778">login</a> ()</td></tr>
 <tr class="memdesc:ae7a5e86a75996f403293f96d6e8f8778"><td class="mdescLeft">&#160;</td><td class="mdescRight">连接到服务器并向服务器发送登录信息，如果登录成功，则发射loginSuccess信号  <a href="classServer.html#ae7a5e86a75996f403293f96d6e8f8778">更多...</a><br /></td></tr>
 <tr class="separator:ae7a5e86a75996f403293f96d6e8f8778"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f3d6fc99da3b13885fdd6f2f1fefe36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a4f3d6fc99da3b13885fdd6f2f1fefe36">setServerInfo</a> ()</td></tr>
-<tr class="separator:a4f3d6fc99da3b13885fdd6f2f1fefe36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6dc4ea36f3241a9d8386fc9950f0ec0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#ae6dc4ea36f3241a9d8386fc9950f0ec0">setHost</a> ()</td></tr>
-<tr class="separator:ae6dc4ea36f3241a9d8386fc9950f0ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66ee7ec1cc836895608a4e3c22255dd8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a66ee7ec1cc836895608a4e3c22255dd8">setPort</a> ()</td></tr>
-<tr class="separator:a66ee7ec1cc836895608a4e3c22255dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81761018f1785c7898cc5ec75a320efa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a81761018f1785c7898cc5ec75a320efa">setNick</a> ()</td></tr>
-<tr class="separator:a81761018f1785c7898cc5ec75a320efa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9b84f45133c318471200adde3e7ccbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#ab9b84f45133c318471200adde3e7ccbb">setUser</a> ()</td></tr>
-<tr class="separator:ab9b84f45133c318471200adde3e7ccbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f50d815956429be5301d8efb45fd299"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a5f50d815956429be5301d8efb45fd299">setPasswd</a> ()</td></tr>
-<tr class="separator:a5f50d815956429be5301d8efb45fd299"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a832a3e22d4407c325f8abfa43ff44c6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a832a3e22d4407c325f8abfa43ff44c6c">setHost</a> (QString host)</td></tr>
+<tr class="separator:a832a3e22d4407c325f8abfa43ff44c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a477fef3ccc9b71a29d2254cc98e85480"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a477fef3ccc9b71a29d2254cc98e85480">setPort</a> (int port)</td></tr>
+<tr class="separator:a477fef3ccc9b71a29d2254cc98e85480"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a2e247ca482dec0ea081b2e5a42177e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a9a2e247ca482dec0ea081b2e5a42177e">setNick</a> (QString nick)</td></tr>
+<tr class="separator:a9a2e247ca482dec0ea081b2e5a42177e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d4b86dce9a5811f9e9a3bfaef305736"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a5d4b86dce9a5811f9e9a3bfaef305736">setUser</a> (QString user)</td></tr>
+<tr class="separator:a5d4b86dce9a5811f9e9a3bfaef305736"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36e8f6fe7bdcbbd29b5d5de6b559418a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a36e8f6fe7bdcbbd29b5d5de6b559418a">setPasswd</a> (QString passwd)</td></tr>
+<tr class="separator:a36e8f6fe7bdcbbd29b5d5de6b559418a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f1ec52f8b76d14574950a1bfe7d7033"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a7f1ec52f8b76d14574950a1bfe7d7033">receiveData</a> ()</td></tr>
+<tr class="memdesc:a7f1ec52f8b76d14574950a1bfe7d7033"><td class="mdescLeft">&#160;</td><td class="mdescRight">接收数据  <a href="classServer.html#a7f1ec52f8b76d14574950a1bfe7d7033">更多...</a><br /></td></tr>
+<tr class="separator:a7f1ec52f8b76d14574950a1bfe7d7033"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p >IRC服务器类 </p>
@@ -267,6 +275,15 @@ Public 成员函数</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>有参构造 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>服务器连接类型 Tcp或Ssl </td></tr>
+    <tr><td class="paramname">parent</td><td>默认nullptr </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -398,8 +415,81 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a id="ae6dc4ea36f3241a9d8386fc9950f0ec0" name="ae6dc4ea36f3241a9d8386fc9950f0ec0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6dc4ea36f3241a9d8386fc9950f0ec0">&#9670;&nbsp;</a></span>setHost()</h2>
+<a id="aa41860d4665f38917ee939bd5b7b359f" name="aa41860d4665f38917ee939bd5b7b359f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa41860d4665f38917ee939bd5b7b359f">&#9670;&nbsp;</a></span>networkError</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::networkError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>网络未连接 </p>
+
+</div>
+</div>
+<a id="a3d6f1ef043956f0099e94d0be046b543" name="a3d6f1ef043956f0099e94d0be046b543"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d6f1ef043956f0099e94d0be046b543">&#9670;&nbsp;</a></span>networkOk</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::networkOk </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>网络已连接 </p>
+
+</div>
+</div>
+<a id="a7f1ec52f8b76d14574950a1bfe7d7033" name="a7f1ec52f8b76d14574950a1bfe7d7033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f1ec52f8b76d14574950a1bfe7d7033">&#9670;&nbsp;</a></span>receiveData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::receiveData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>接收数据 </p>
+
+</div>
+</div>
+<a id="a832a3e22d4407c325f8abfa43ff44c6c" name="a832a3e22d4407c325f8abfa43ff44c6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a832a3e22d4407c325f8abfa43ff44c6c">&#9670;&nbsp;</a></span>setHost()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -407,7 +497,8 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void Server::setHost </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>host</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -415,8 +506,8 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a id="a81761018f1785c7898cc5ec75a320efa" name="a81761018f1785c7898cc5ec75a320efa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81761018f1785c7898cc5ec75a320efa">&#9670;&nbsp;</a></span>setNick()</h2>
+<a id="a9a2e247ca482dec0ea081b2e5a42177e" name="a9a2e247ca482dec0ea081b2e5a42177e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a2e247ca482dec0ea081b2e5a42177e">&#9670;&nbsp;</a></span>setNick()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -424,7 +515,8 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void Server::setNick </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>nick</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -432,8 +524,8 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a id="a5f50d815956429be5301d8efb45fd299" name="a5f50d815956429be5301d8efb45fd299"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f50d815956429be5301d8efb45fd299">&#9670;&nbsp;</a></span>setPasswd()</h2>
+<a id="a36e8f6fe7bdcbbd29b5d5de6b559418a" name="a36e8f6fe7bdcbbd29b5d5de6b559418a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36e8f6fe7bdcbbd29b5d5de6b559418a">&#9670;&nbsp;</a></span>setPasswd()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -441,7 +533,8 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void Server::setPasswd </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>passwd</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -449,8 +542,8 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a id="a66ee7ec1cc836895608a4e3c22255dd8" name="a66ee7ec1cc836895608a4e3c22255dd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66ee7ec1cc836895608a4e3c22255dd8">&#9670;&nbsp;</a></span>setPort()</h2>
+<a id="a477fef3ccc9b71a29d2254cc98e85480" name="a477fef3ccc9b71a29d2254cc98e85480"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a477fef3ccc9b71a29d2254cc98e85480">&#9670;&nbsp;</a></span>setPort()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -458,7 +551,8 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void Server::setPort </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -466,25 +560,8 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a id="a4f3d6fc99da3b13885fdd6f2f1fefe36" name="a4f3d6fc99da3b13885fdd6f2f1fefe36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f3d6fc99da3b13885fdd6f2f1fefe36">&#9670;&nbsp;</a></span>setServerInfo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Server::setServerInfo </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab9b84f45133c318471200adde3e7ccbb" name="ab9b84f45133c318471200adde3e7ccbb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9b84f45133c318471200adde3e7ccbb">&#9670;&nbsp;</a></span>setUser()</h2>
+<a id="a5d4b86dce9a5811f9e9a3bfaef305736" name="a5d4b86dce9a5811f9e9a3bfaef305736"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d4b86dce9a5811f9e9a3bfaef305736">&#9670;&nbsp;</a></span>setUser()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -492,7 +569,8 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">void Server::setUser </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>user</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
