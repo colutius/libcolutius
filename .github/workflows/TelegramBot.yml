@@ -7,6 +7,7 @@ jobs:
     steps:
       - name: get yiyan
         run: |
+          curl v1.hitokoto.cn
           echo "\"YIYAN"="'$(curl v1.hitokoto.cn | jq -r .hitokoto)'\""
           echo "\"YIYAN"="'$(curl v1.hitokoto.cn | jq -r .hitokoto)'\"" >> $GITHUB_ENV
       - name: use
