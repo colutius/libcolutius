@@ -1,7 +1,7 @@
 var searchData=
 [
   ['sender_0',['Sender',['../classMessage.html#a1f1da61616045ef45234ae6bf1f13cfd',1,'Message']]],
-  ['server_1',['Server',['../classMessage.html#a1f1da61616045ef45234ae6bf1f13cfdaaf7fa39a219651c82e61a888711fdfba',1,'Message::Server()'],['../classServer.html#aaf98d5194faee831c6340cc736b9b879',1,'Server::Server()'],['../classServer.html',1,'Server']]],
+  ['server_1',['Server',['../classMessage.html#a1f1da61616045ef45234ae6bf1f13cfdaaf7fa39a219651c82e61a888711fdfba',1,'Message::Server()'],['../classServer.html#aaf98d5194faee831c6340cc736b9b879',1,'Server::Server(QObject *parent=nullptr)'],['../classServer.html#ac3ba890f407638bcc814b302687c1486',1,'Server::Server(Type type, QObject *parent=nullptr)'],['../classServer.html',1,'Server']]],
   ['server_2ecpp_2',['Server.cpp',['../Server_8cpp.html',1,'']]],
   ['server_2eh_3',['Server.h',['../Server_8h.html',1,'']]],
   ['sethost_4',['setHost',['../classServer.html#ae6dc4ea36f3241a9d8386fc9950f0ec0',1,'Server']]],
