@@ -21,9 +21,9 @@ class Server : public QObject
 {
     Q_OBJECT
   signals:
-    void connectedSuccess(); ///<服务器连接成功
-    void connectedFail();    ///<服务器连接失败
-    void disconnected();     ///<服务器断开连接
+    void loginSuccess(); ///<服务器连接成功
+    void loginFail();    ///<服务器连接失败
+    void disconnected(); ///<服务器断开连接
   public:
     /**
      * @brief 服务器当前状态
@@ -41,7 +41,8 @@ class Server : public QObject
         Tcp, ///< TCP Socket
         Ssl, ///< SSL Socket
     };
-    Server(QObject *parent = nullptr);
+    explicit Server(QObject *parent = nullptr);
+    Server(Type type, QObject *parent = nullptr);
     ~Server() override;
     void login();
     void setServerInfo();
@@ -52,15 +53,19 @@ class Server : public QObject
     void setPasswd();
 
   private:
-    void checkNetWork();    //检查网络连接情况
-    void sendData();        //向服务器发送数据
+    void _checkNetWork();   //检查网络连接情况
+    void _sendData();       //向服务器发送数据
+    void _initConnect();    //初始化信号槽
+    void _connect();        //连接到服务器
+    void _login();          //登录到服务器
     QString _host;          //服务器地址
-    int _port;              //服务器端口号
+    int _port = 0;          //服务器端口号
     QString _nick;          //昵称
     QString _user;          //用户名
     QString _passwd;        //密码
     QTcpSocket *_tcpsocket; // tcp socket
     QSslSocket *_sslsocket; // ssl socket
-    Status _status;         //服务器状态
-    Type _type;             //服务器连接类型
+    QAbstractSocket *_socket;
+    Status _status; //服务器状态
+    Type _type;     //服务器连接类型
 };
