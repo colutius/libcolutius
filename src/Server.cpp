@@ -16,30 +16,41 @@
  */
 Server::Server(QObject *parent) : QObject(parent)
 {
-    this->_tcpsocket = new QTcpSocket;
-    this->_sslsocket = new QSslSocket;
+    this->_socket = new QTcpSocket;
+    this->_initConnect();
 }
+/**
+ * @brief 有参构造
+ * @param type 服务器连接类型 Tcp或Ssl
+ * @param parent 默认nullptr
+ */
 Server::Server(Server::Type type, QObject *parent)
 {
-    this->_tcpsocket = new QTcpSocket;
-    this->_sslsocket = new QSslSocket;
     this->_type = type;
     switch (this->_type)
     {
     case Tcp:
-        this->_socket = this->_tcpsocket;
+        this->_socket = new QTcpSocket;
     case Ssl:
-        this->_socket = this->_sslsocket;
+        this->_socket = new QSslSocket;
     }
+    this->_initConnect();
 }
 /**
  * @brief 默认析构函数
  */
 Server::~Server() = default;
+/**
+ * @brief 初始化信号槽
+ */
 void Server::_initConnect()
 {
+    //网络检查正常后连接到服务器
+    connect(this, &Server::networkOk, this, &Server::_connect);
     //连接成功后发送登录信息
     connect(this->_socket, &QAbstractSocket::connected, this, &Server::_login);
+    //接收数据
+    connect(this->_socket, &QAbstractSocket::readyRead, this, &Server::receiveData);
 }
 /**
  * @brief 连接到服务器并向服务器发送登录信息，如果登录成功，则发射loginSuccess信号
@@ -59,13 +70,70 @@ void Server::login()
         return;
     }
     //检查网络连接
-    // TODO 检查网络连接
-    this->_checkNetWork();
+    QHostInfo::lookupHost(this->_host, this, SLOT(_checkNetWork(QHostInfo)));
 }
 void Server::_connect()
 {
     this->_socket->connectToHost(this->_host, this->_port);
+    qDebug() << "开始登录";
 }
-void Server::_checkNetWork()
+/**
+ * @brief 检查网络连接状态
+ */
+void Server::_checkNetWork(QHostInfo host)
 {
+    if (host.error() != QHostInfo::NoError)
+    {
+        qDebug() << "网络连接异常" << host.errorString();
+        emit networkError();
+    }
+    else
+    {
+        qDebug() << "网络连接正常,开始连接到服务器";
+        emit networkOk();
+    }
+}
+void Server::_login()
+{
+    if (!this->_passwd.isEmpty())
+    {
+        this->_sendData("PASS " + this->_passwd);
+    }
+    this->_sendData("NICK " + this->_nick);
+    this->_sendData("USER " + this->_user + " 8 * :Colutius IRC Client");
+}
+/**
+ * @brief
+ */
+void Server::_sendData(QString data)
+{
+    QByteArray buf = (data + "\r\n").toUtf8();
+    this->_socket->write(buf);
+}
+void Server::setHost(QString host)
+{
+    this->_host = host;
+}
+void Server::setPort(int port)
+{
+    this->_port = port;
+}
+void Server::setNick(QString nick)
+{
+    this->_nick = nick;
+}
+void Server::setUser(QString user)
+{
+    this->_user = user;
+}
+void Server::setPasswd(QString passwd)
+{
+    this->_passwd = passwd;
+}
+/**
+ * @brief 接收数据
+ */
+void Server::receiveData()
+{
+    qDebug() << QString(this->_socket->readAll());
 }

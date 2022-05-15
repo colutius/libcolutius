@@ -1,13 +1,15 @@
 #include <Message.h>
 #include <QCoreApplication>
+#include <Server.h>
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    auto *msg = new Message("hgy!hgy@123.23.3.23 PRIVMSG #linux :hello?: everyone");
-
-    qDebug() << msg->getMainMsg();
-    qDebug() << msg->getNick();
-    qDebug() << msg->getIp();
-    qDebug() << msg->getChannel();
+    auto *server = new Server(Server::Tcp);
+    server->setHost("irc.libera.chat");
+    server->setPort(6667);
+    server->setNick("colutius");
+    server->setUser("colutius");
+    server->login();
+    return QCoreApplication::exec();
 }
