@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: get yiyan
         run: |
-          apt-get install jq
+          apt-get install -y jq
           echo "YIYAN="(curl v1.hitokoto.cn | jq .hitokoto) >> $GITHUB_ENV
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
