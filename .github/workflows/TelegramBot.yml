@@ -9,26 +9,18 @@ jobs:
       - name: get yiyan
         run: |
           echo "YIYAN=$(curl 'https://v1.hitokoto.cn?c=a&c=d&c=i&c=j&c=k' | jq -r .hitokoto)" >> $GITHUB_ENV
-      # 配置python
-      - uses: actions/setup-python@v3
+      # 发送到Telegram
+      - uses: colutius/Telegram-Msg@master
         with:
-          python-version: '3.9' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-      - run: |
-          pip install python-telegram-bot # telegram.__version__ = 13.3
-      # 拉取代码
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-      # 发送消息
-      - name: send to telegram
-        env:
-          TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TO: ${{ secrets.TELEGRAM_TO }}
-          actor: ${{ github.actor }}
-          message: ${{ github.event.commits[0].message }}
-          repository: ${{ github.repository }}
-          sha: ${{github.sha}}
-          yiyan: ${{ env.YIYAN }}
-        run: |
-          python scripts/main.py
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          chatid: ${{ secrets.TELEGRAM_TO }}
+          message: |
+            👇新的提交👇
+
+            👤提交人: [${{ github.actor }}]
+
+            📄提交信息: ${{ github.event.commits[0].message }}
+
+            📦仓库: ${{ github.repository }}
+
+            🗓每日一言: ${{ env.YIYAN }}
