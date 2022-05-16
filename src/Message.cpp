@@ -84,10 +84,6 @@ Message::Type Message::getMsgType()
 void Message::setMsgSender(Message::Sender sender)
 {
     this->_sender = sender;
-    if (this->getMsgSender() == Sender::Owner)
-    {
-        this->parse();
-    }
 }
 /**
  * @brief 获取此消息的发送者
@@ -121,58 +117,43 @@ void Message::parse()
             this->setMsgSender(Sender::Server);
         }
     }
-    switch (this->_sender)
+    switch (this->getMsgSender())
     {
     case Server:
-        //服务器消息有可能有多行消息
-        buf = this->getRawMsg().split("\r\n");
+        // PING消息
+        if (buf[0] == "PING")
+        {
+            this->setMsgType(Type::Ping);
+            this->parseMainMsg(this->getRawMsg(), 1);
+            break;
+        }
+        // ERROR消息
+        if (buf[0] == "ERROR")
+        {
+            this->setMsgType(Type::Error);
+            this->parseMainMsg(this->getRawMsg(), 1);
+            break;
+        }
         if (buf.length() > 1)
         {
-            // TODO 处理服务器的多行消息
-        }
-        else
-        {
-            buf = this->getRawMsg().split(" ");
-            // PING消息
-            if (buf[0] == "PING")
+            //判断是否为数字指令
+            QRegularExpression num("[0-9].*");
+            QRegularExpressionValidator isNum(num);
+            int pos = 0;
+            //数字指令
+            if (isNum.validate(buf[1], pos) == QValidator::Acceptable)
             {
-                this->setMsgType(Type::Ping);
-                this->parseMainMsg(this->getRawMsg(), 1);
+                this->setMsgType(Type::Num);
+                this->_num = buf[1].toInt();
+                this->parseMainMsg(this->getRawMsg(), 2);
                 break;
             }
-            // ERROR消息
-            if (buf[0] == "ERROR")
+            // NOTICE消息
+            if (buf[1] == "NOTICE")
             {
-                this->setMsgType(Type::Error);
-                this->parseMainMsg(this->getRawMsg(), 1);
+                this->setMsgType(Type::Notice);
+                this->parseMainMsg(this->getRawMsg(), 2);
                 break;
-            }
-            if (buf.length() > 1)
-            {
-                //判断是否为数字指令
-                QRegularExpression num("[0-9].*");
-                QRegularExpressionValidator isNum(num);
-                int pos = 0;
-                //数字指令
-                if (isNum.validate(buf[1], pos) == QValidator::Acceptable)
-                {
-                    this->parseMainMsg(this->getRawMsg(), 2);
-                    // TODO 分别解析不同的数字
-                    switch (buf[1].toInt())
-                    {
-                    case 352:
-                        return;
-                    default:
-                        return;
-                    }
-                }
-                // NOTICE消息
-                if (buf[1] == "NOTICE")
-                {
-                    this->setMsgType(Type::Notice);
-                    this->parseMainMsg(this->getRawMsg(), 2);
-                    break;
-                }
             }
         }
         break;
@@ -271,6 +252,11 @@ void Message::parseMainMsg(QString msg, int index)
     QString mainMsg = "";
     for (int i = index; i < buf.length(); i++)
     {
+        if (i == buf.length() - 1)
+        {
+            mainMsg += buf[i];
+            continue;
+        }
         mainMsg += buf[i] + " ";
     }
     this->_mainMsg = mainMsg;
@@ -344,4 +330,8 @@ QString Message::getIp()
 void Message::setTime()
 {
     this->_msgTime = QTime::currentTime();
+}
+int Message::getNum()
+{
+    return this->_num;
 }

@@ -63,17 +63,19 @@ class Message : public QObject
     QString getChannel();             //获取频道名称
     QString getNick();                //获取发送者昵称
     QString getIp();                  //获取发送者IP
+    int getNum();                     //获取数字
 
   private:
     void parseMsgSender(QString msg);          //解析消息发送者信息
     void parseMainMsg(QString msg, int index); //解析消息的主要信息
     void setTime();                            //设置当前时间
-    Type _type;                                //消息类型
+    Type _type = None;                         //消息类型
     Sender _sender;                            //消息发送者
     QString _rawMsg;                           //原始数据
     QString _mainMsg;                          //消息主体信息
     QString _channel;                          //消息发送到的频道
     QString _nick;                             //消息发送者昵称
     QString _ip;                               //消息发送者ip
+    int _num;                                  //数字指令消息的数字
     QTime _msgTime;                            //消息发送/接收时间
 };

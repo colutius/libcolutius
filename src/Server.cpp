@@ -135,5 +135,69 @@ void Server::setPasswd(QString passwd)
  */
 void Server::receiveData()
 {
-    qDebug() << QString(this->_socket->readAll());
+    //分割多行消息
+    QStringList buf = QString(this->_socket->readAll()).split("\r\n");
+    //遍历多行消息
+    foreach (auto i, buf)
+    {
+        //确保此行消息非空
+        if (i.isEmpty())
+        {
+            continue;
+        }
+        //创建消息实例
+        auto *message = new Message(i);
+        //按消息发送者分类处理
+        switch (message->getMsgSender())
+        {
+            //服务器消息
+        case Message::Server:
+            switch (message->getMsgType())
+            {
+            case Message::None:
+                qDebug() << message->getRawMsg();
+                break;
+            case Message::Ping:
+                _sendData("PONG :" + message->getMainMsg());
+                qDebug() << "PONG :" + message->getMainMsg();
+                break;
+            case Message::Error:
+                qDebug() << "ERROR " + message->getMainMsg();
+                break;
+            case Message::Notice:
+                qDebug() << "NOTICE " + message->getMainMsg();
+                break;
+            case Message::Join:
+                break;
+            case Message::Nick:
+                break;
+            case Message::Kick:
+                break;
+            case Message::Num:
+                qDebug() << QString::number(message->getNum()) + " " + message->getMainMsg();
+                break;
+            case Message::Private:
+                break;
+            case Message::Channel:
+                break;
+            default:
+                break;
+            }
+            break;
+            //用户消息
+        case Message::User:
+            switch (message->getMsgType())
+            {
+            case Message::Channel:
+                break;
+            case Message::Private:
+                break;
+            default:
+                break;
+            }
+            break;
+        default:
+            break;
+        }
+    }
 }

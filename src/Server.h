@@ -9,6 +9,7 @@
  *
  */
 #pragma once
+#include <Message.h>
 #include <QDebug>
 #include <QHostInfo>
 #include <QObject>
