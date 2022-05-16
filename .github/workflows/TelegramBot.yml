@@ -10,7 +10,7 @@ jobs:
         run: |
           echo "YIYAN=$(curl 'https://v1.hitokoto.cn?c=a&c=d&c=i&c=j&c=k' | jq -r .hitokoto)" >> $GITHUB_ENV
       # 发送到Telegram
-      - uses: colutius/Telegram-Msg@master
+      - uses: colutius/Telegram-Msg@main
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           chatid: ${{ secrets.TELEGRAM_TO }}
