@@ -15,10 +15,14 @@ set(REQUIRED_LIBS_QUALIFIED Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Network)
 add_library(${PROJECT_NAME} SHARED
         Server.cpp
         Server.h
-        Channel.cpp
-        Channel.h
         Message.cpp
         Message.h
+        Session.cpp
+        Session.h
+        Channel.cpp
+        Channel.h
+        User.cpp
+        User.h
         )
 find_package(Qt${QT_VERSION} COMPONENTS ${REQUIRED_LIBS} REQUIRED)
 target_link_libraries(${PROJECT_NAME} ${REQUIRED_LIBS_QUALIFIED})

@@ -9,7 +9,10 @@
  *
  */
 #pragma once
-#include <Message.h>
+#include "Channel.h"
+#include "Message.h"
+#include "Session.h"
+#include "User.h"
 #include <QDebug>
 #include <QHostInfo>
 #include <QObject>
@@ -58,15 +61,16 @@ class Server : public QObject
   private slots:
     void _checkNetWork(QHostInfo host); //检查网络连接情况
   private:
-    void _sendData(QString data); //向服务器发送数据
-    void _initConnect();          //初始化信号槽
-    void _connect();              //连接到服务器
-    void _login();                //登录到服务器
-    QString _host;                //服务器地址
-    int _port = 0;                //服务器端口号
-    QString _nick;                //昵称
-    QString _user;                //用户名
-    QString _passwd = "";         //密码
+    void _sendData(QString data);  //向服务器发送数据
+    void _initConnect();           //初始化信号槽
+    void _connect();               //连接到服务器
+    void _login();                 //登录到服务器
+    QList<Session *> _sessionList; //会话列表
+    QString _host;                 //服务器地址
+    int _port = 0;                 //服务器端口号
+    QString _nick;                 //昵称
+    QString _user;                 //用户名
+    QString _passwd = "";          //密码
     QAbstractSocket *_socket;
     Status _status; //服务器状态
     Type _type;     //服务器连接类型

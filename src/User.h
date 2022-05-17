@@ -1,7 +1,7 @@
 /**
- * @file Channel.h
+ * @file User.h
  * @author ambition_echo (ambition_echo@outlook.com)
- * @brief  IRC频道类头文件
+ * @brief  IRC用户类头文件
  * @version 0.1
  * @date 2022-05-09
  *
@@ -11,13 +11,13 @@
 #pragma once
 #include "Session.h"
 /**
- * @brief IRC频道类
+ * @brief IRC用户类
  *
  */
-class Channel : public Session
+class User : public Session
 {
     Q_OBJECT
   public:
-    explicit Channel(Session *parent = nullptr);
-    ~Channel() override;
+    explicit User(Session *parent = nullptr);
+    ~User() override;
 };
