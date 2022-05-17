@@ -12,21 +12,17 @@ set(QT_VERSION 6)
 set(REQUIRED_LIBS Core Gui Widgets Network)
 set(REQUIRED_LIBS_QUALIFIED Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Network)
 
+file(GLOB INCLUDE "*.h")
+
 add_library(${PROJECT_NAME} SHARED
+        ${INCLUDE}
         Server.cpp
-        Server.h
         Message.cpp
-        Message.h
         Session.cpp
-        Session.h
         Channel.cpp
-        Channel.h
         User.cpp
-        User.h
         )
 find_package(Qt${QT_VERSION} COMPONENTS ${REQUIRED_LIBS} REQUIRED)
 target_link_libraries(${PROJECT_NAME} ${REQUIRED_LIBS_QUALIFIED})
 
-file(COPY ${PROJECT_SOURCE_DIR}/Server.h DESTINATION ${PROJECT_BINARY_DIR}/../include)
-file(COPY ${PROJECT_SOURCE_DIR}/Channel.h DESTINATION ${PROJECT_BINARY_DIR}/../include)
-file(COPY ${PROJECT_SOURCE_DIR}/Message.h DESTINATION ${PROJECT_BINARY_DIR}/../include)
+file(COPY ${INCLUDE} DESTINATION ${PROJECT_BINARY_DIR}/../include)
