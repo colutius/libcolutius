@@ -12,6 +12,8 @@
 ## 包含类
 
 - [Server](https://colutius.github.io/libcolutius/classServer.html)(服务器类)
+- [Session](https://colutius.github.io/libcolutius/classSession.html)(会话类)
+- [User](https://colutius.github.io/libcolutius/classUser.html)(用户类)
 - [Channel](https://colutius.github.io/libcolutius/classServer.html)(频道类)
 - [Message](https://colutius.github.io/libcolutius/classMessage.html)(消息类)
 
