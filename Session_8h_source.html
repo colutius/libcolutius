@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libcolutius: 类列表</title>
+<title>libcolutius: src/Session.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('annotated.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('Session_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -91,23 +91,33 @@ $(document).ready(function(){initNavTree('annotated.html',''); initResizable(); 
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">类列表</div></div>
+  <div class="headertitle"><div class="title">Session.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">这里列出了所有类、结构、联合以及接口定义等，并附带简要说明:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classChannel.html" target="_self">Channel</a></td><td class="desc">IRC频道类 </td></tr>
-<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classMessage.html" target="_self">Message</a></td><td class="desc">IRC消息类 将原始数据传入其中，由该类对接收到的消息进行解析、分类、格式化 </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classServer.html" target="_self">Server</a></td><td class="desc">IRC服务器类 </td></tr>
-<tr id="row_3_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classSession.html" target="_self">Session</a></td><td class="desc">IRC会话类 </td></tr>
-<tr id="row_4_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classUser.html" target="_self">User</a></td><td class="desc">IRC用户类 </td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<a href="Session_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="Message_8h.html">Message.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classSession.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="classSession.html">Session</a> : <span class="keyword">public</span> QObject</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    Q_OBJECT</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classSession.html#af357702258dc1466b18441dab4ba8ea2">Session</a>(QObject *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classSession.html#a0f31ff6c59ea04a520655cbc11cf63bc">   23</a></span>    <a class="code hl_function" href="classSession.html#a0f31ff6c59ea04a520655cbc11cf63bc">~Session</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    QList&lt;Message *&gt; _messageList; <span class="comment">//消息列表</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+<div class="ttc" id="aMessage_8h_html"><div class="ttname"><a href="Message_8h.html">Message.h</a></div><div class="ttdoc">IRC消息类头文件</div></div>
+<div class="ttc" id="aclassSession_html"><div class="ttname"><a href="classSession.html">Session</a></div><div class="ttdoc">IRC会话类</div><div class="ttdef"><b>Definition:</b> Session.h:19</div></div>
+<div class="ttc" id="aclassSession_html_a0f31ff6c59ea04a520655cbc11cf63bc"><div class="ttname"><a href="classSession.html#a0f31ff6c59ea04a520655cbc11cf63bc">Session::~Session</a></div><div class="ttdeci">~Session() override</div></div>
+<div class="ttc" id="aclassSession_html_af357702258dc1466b18441dab4ba8ea2"><div class="ttname"><a href="classSession.html#af357702258dc1466b18441dab4ba8ea2">Session::Session</a></div><div class="ttdeci">Session(QObject *parent=nullptr)</div><div class="ttdef"><b>Definition:</b> Session.cpp:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="Session_8h.html">Session.h</a></li>
     <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4 </li>
   </ul>
 </div>
