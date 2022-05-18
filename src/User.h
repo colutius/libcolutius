@@ -18,6 +18,6 @@ class User : public Session
 {
     Q_OBJECT
   public:
-    explicit User(Session *parent = nullptr);
+    explicit User(QString name, Session *parent = nullptr);
     ~User() override;
 };

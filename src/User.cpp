@@ -10,7 +10,7 @@
  */
 #include "User.h"
 
-User::User(Session *parent) : Session(parent)
+User::User(QString name, Session *parent) : Session(std::move(name), parent)
 {
 }
 User::~User() = default;

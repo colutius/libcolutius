@@ -18,10 +18,16 @@
 class Session : public QObject
 {
     Q_OBJECT
+  signals:
+    void newMsg(); ///<新消息
   public:
-    explicit Session(QObject *parent = nullptr);
+    explicit Session(QString name, QObject *parent = nullptr);
     ~Session() override;
 
-  private:
+    QString getName();                 //获取会话名称
+    void addMessage(Message *message); //添加消息
+
+  protected:
     QList<Message *> _messageList; //消息列表
+    QString _name;                 //会话名称
 };

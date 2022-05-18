@@ -10,7 +10,7 @@
  */
 #include "Channel.h"
 
-Channel::Channel(Session *parent) : Session(parent)
+Channel::Channel(QString name, Session *parent) : Session(std::move(name), parent)
 {
 }
 Channel::~Channel() = default;

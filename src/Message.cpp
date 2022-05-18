@@ -10,15 +10,6 @@
  */
 #include "Message.h"
 /**
- * @brief 无参构造,采用这种构造方式之后，
- * 需要调用`setRawMsg()`和setMsgSender()手动设置其中的原始数据和消息发送者
- * @param parent 默认为nullptr
- */
-Message::Message(QObject *parent) : QObject(parent)
-{
-    this->setTime();
-}
-/**
  * @brief 有参构造函数
  * @param msg 接收到的原始数据或即将发送的原始数据
  * @param sender 消息发送者,默认为User,
@@ -29,7 +20,7 @@ Message::Message(QObject *parent) : QObject(parent)
 Message::Message(QString msg, Message::Sender sender, QObject *parent) : QObject(parent)
 {
     this->setMsgSender(sender);
-    this->setRawMsg(msg);
+    this->setRawMsg(std::move(msg));
     this->setTime();
 }
 /**
@@ -42,7 +33,7 @@ Message::~Message() = default;
  */
 void Message::setRawMsg(QString msg)
 {
-    this->_rawMsg = msg;
+    this->_rawMsg = std::move(msg);
     this->parse();
 }
 /**
@@ -156,11 +147,20 @@ void Message::parse()
                 break;
             }
         }
+        this->setMsgType(Type::None);
+        this->parseMainMsg(this->getRawMsg(), 0);
         break;
     case User:
         if (buf[1] == "JOIN")
         {
             this->setMsgType(Type::Join);
+            this->parseMainMsg(this->getRawMsg(), 2);
+            this->parseMsgSender(buf[0]);
+            break;
+        }
+        if (buf[1] == "QUIT")
+        {
+            this->setMsgType(Type::Quit);
             this->parseMainMsg(this->getRawMsg(), 2);
             this->parseMsgSender(buf[0]);
             break;
@@ -237,7 +237,7 @@ void Message::parse()
  * @param msg 消息原始数据
  * @param index 将消息以空格分隔后，主题消息头所在的位置
  */
-void Message::parseMainMsg(QString msg, int index)
+void Message::parseMainMsg(const QString &msg, int index)
 {
     QStringList buf = msg.split(" ");
     if (index < 0 || index >= buf.length())
@@ -280,7 +280,7 @@ QString Message::getMainMsg()
  * 例如：colutius!~colutius@123.123 PRIVMSG #colutius :hello?
  * 传入colutius!~colutius@123.123即可
  */
-void Message::parseMsgSender(QString msg)
+void Message::parseMsgSender(const QString &msg)
 {
     QStringList buf = msg.split("!");
     //去除头部冒号
@@ -298,7 +298,7 @@ void Message::parseMsgSender(QString msg)
  */
 void Message::setNick(QString nick)
 {
-    this->_nick = nick;
+    this->_nick = std::move(nick);
 }
 /**
  * @brief 获取频道名
@@ -331,7 +331,19 @@ void Message::setTime()
 {
     this->_msgTime = QTime::currentTime();
 }
-int Message::getNum()
+/**
+ * @brief 获取数字消息的数字值
+ * @return 数字消息的数字值
+ */
+int Message::getNum() const
 {
     return this->_num;
+}
+/**
+ * @brief 获取消息的发送时间
+ * @return QTime格式的时间
+ */
+QTime Message::getTime()
+{
+    return this->_msgTime;
 }
