@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['receivedata_0',['receiveData',['../classServer.html#a7f1ec52f8b76d14574950a1bfe7d7033',1,'Server']]]
+  ['parse_0',['parse',['../classMessage.html#a0d00f328a94b51a4482826525be45eac',1,'Message']]]
 ];

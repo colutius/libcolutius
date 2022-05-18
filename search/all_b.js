@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['receivedata_0',['receiveData',['../classServer.html#a7f1ec52f8b76d14574950a1bfe7d7033',1,'Server']]]
+  ['owner_0',['Owner',['../classMessage.html#a1f1da61616045ef45234ae6bf1f13cfda63154053dcac3c73a835c4791989d83a',1,'Message']]]
 ];

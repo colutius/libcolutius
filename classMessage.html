@@ -119,12 +119,13 @@ Public 类型</h2></td></tr>
 , <a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bad8306a69fa50f815d9a6322bd8cb67ca">Notice</a> = 4
 , <br />
 &#160;&#160;<a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2ba78cdb0df550de9edcdb31b6674494c6d">Join</a> = 5
-, <a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bada61946ceda894152a4c903bc5e243c6">Nick</a> = 6
-, <a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bae84707f71527ec2711cf514880b0acb9">Kick</a> = 7
-, <a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2baad24b154eb38edd0253c6fcb4a489306">Num</a> = 8
+, <a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2ba0552adae072e8a31f0c64c929914d457">Quit</a> = 6
+, <a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bada61946ceda894152a4c903bc5e243c6">Nick</a> = 7
+, <a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bae84707f71527ec2711cf514880b0acb9">Kick</a> = 8
 , <br />
-&#160;&#160;<a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bace272047fc33bcc12ed0ad0eefc14e69">Private</a> = 9
-, <a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2ba7fd9de074f0c9c03ce0850b175ced457">Channel</a> = 10
+&#160;&#160;<a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2baad24b154eb38edd0253c6fcb4a489306">Num</a> = 9
+, <a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bace272047fc33bcc12ed0ad0eefc14e69">Private</a> = 10
+, <a class="el" href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2ba7fd9de074f0c9c03ce0850b175ced457">Channel</a> = 11
 <br />
  }</td></tr>
 <tr class="memdesc:a1c65ab3f02ba5b175f583f9d275ecf2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">消息类型  <a href="classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2b">更多...</a><br /></td></tr>
@@ -138,12 +139,9 @@ Public 类型</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:ab4d7d907d66174179b05b244190ffb07"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#ab4d7d907d66174179b05b244190ffb07">Message</a> (QObject *parent=nullptr)</td></tr>
-<tr class="memdesc:ab4d7d907d66174179b05b244190ffb07"><td class="mdescLeft">&#160;</td><td class="mdescRight">无参构造,采用这种构造方式之后， 需要调用<code><a class="el" href="classMessage.html#ad6cc31e67b950ead5be65fa458c58322" title="设置原始数据">setRawMsg()</a></code>和setMsgSender()手动设置其中的原始数据和消息发送者  <a href="classMessage.html#ab4d7d907d66174179b05b244190ffb07">更多...</a><br /></td></tr>
-<tr class="separator:ab4d7d907d66174179b05b244190ffb07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82778c145082141c56d2638b9df38cdd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#a82778c145082141c56d2638b9df38cdd">Message</a> (QString msg, <a class="el" href="classMessage.html#a1f1da61616045ef45234ae6bf1f13cfd">Sender</a> sender=Sender::User, QObject *parent=nullptr)</td></tr>
-<tr class="memdesc:a82778c145082141c56d2638b9df38cdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">有参构造函数  <a href="classMessage.html#a82778c145082141c56d2638b9df38cdd">更多...</a><br /></td></tr>
-<tr class="separator:a82778c145082141c56d2638b9df38cdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c901cc74e9c328ae32140d2653c1cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#ac5c901cc74e9c328ae32140d2653c1cb">Message</a> (QString msg=&quot;&quot;, <a class="el" href="classMessage.html#a1f1da61616045ef45234ae6bf1f13cfd">Sender</a> sender=Sender::User, QObject *parent=nullptr)</td></tr>
+<tr class="memdesc:ac5c901cc74e9c328ae32140d2653c1cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">有参构造函数  <a href="classMessage.html#ac5c901cc74e9c328ae32140d2653c1cb">更多...</a><br /></td></tr>
+<tr class="separator:ac5c901cc74e9c328ae32140d2653c1cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefaeef0caed942ae0920bea838065b0a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#aefaeef0caed942ae0920bea838065b0a">~Message</a> () override</td></tr>
 <tr class="memdesc:aefaeef0caed942ae0920bea838065b0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认析构函数  <a href="classMessage.html#aefaeef0caed942ae0920bea838065b0a">更多...</a><br /></td></tr>
 <tr class="separator:aefaeef0caed942ae0920bea838065b0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,8 +181,12 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a87dcb7cbbdfaf266cd2a428802bdaa49"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#a87dcb7cbbdfaf266cd2a428802bdaa49">getIp</a> ()</td></tr>
 <tr class="memdesc:a87dcb7cbbdfaf266cd2a428802bdaa49"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取消息发送者ip  <a href="classMessage.html#a87dcb7cbbdfaf266cd2a428802bdaa49">更多...</a><br /></td></tr>
 <tr class="separator:a87dcb7cbbdfaf266cd2a428802bdaa49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97ea88f43758b5f29f8981ba620c3c0f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#a97ea88f43758b5f29f8981ba620c3c0f">getNum</a> ()</td></tr>
-<tr class="separator:a97ea88f43758b5f29f8981ba620c3c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9272d260ba25b5582aa3b28e52dcb80c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#a9272d260ba25b5582aa3b28e52dcb80c">getNum</a> () const</td></tr>
+<tr class="memdesc:a9272d260ba25b5582aa3b28e52dcb80c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取数字消息的数字值  <a href="classMessage.html#a9272d260ba25b5582aa3b28e52dcb80c">更多...</a><br /></td></tr>
+<tr class="separator:a9272d260ba25b5582aa3b28e52dcb80c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34425466132ab95f6d17d8c0bdd41f9a"><td class="memItemLeft" align="right" valign="top">QTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#a34425466132ab95f6d17d8c0bdd41f9a">getTime</a> ()</td></tr>
+<tr class="memdesc:a34425466132ab95f6d17d8c0bdd41f9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取消息的发送时间  <a href="classMessage.html#a34425466132ab95f6d17d8c0bdd41f9a">更多...</a><br /></td></tr>
+<tr class="separator:a34425466132ab95f6d17d8c0bdd41f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p >IRC消息类 将原始数据传入其中，由该类对接收到的消息进行解析、分类、格式化 </p>
@@ -237,6 +239,8 @@ Public 成员函数</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a1c65ab3f02ba5b175f583f9d275ecf2ba78cdb0df550de9edcdb31b6674494c6d" name="a1c65ab3f02ba5b175f583f9d275ecf2ba78cdb0df550de9edcdb31b6674494c6d"></a>Join&#160;</td><td class="fielddoc"><p >加入信息 </p>
 </td></tr>
+<tr><td class="fieldname"><a id="a1c65ab3f02ba5b175f583f9d275ecf2ba0552adae072e8a31f0c64c929914d457" name="a1c65ab3f02ba5b175f583f9d275ecf2ba0552adae072e8a31f0c64c929914d457"></a>Quit&#160;</td><td class="fielddoc"><p >退出频道消息 </p>
+</td></tr>
 <tr><td class="fieldname"><a id="a1c65ab3f02ba5b175f583f9d275ecf2bada61946ceda894152a4c903bc5e243c6" name="a1c65ab3f02ba5b175f583f9d275ecf2bada61946ceda894152a4c903bc5e243c6"></a>Nick&#160;</td><td class="fielddoc"><p >昵称相关信息 </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a1c65ab3f02ba5b175f583f9d275ecf2bae84707f71527ec2711cf514880b0acb9" name="a1c65ab3f02ba5b175f583f9d275ecf2bae84707f71527ec2711cf514880b0acb9"></a>Kick&#160;</td><td class="fielddoc"><p >踢人信息 </p>
@@ -252,8 +256,8 @@ Public 成员函数</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">构造及析构函数说明</h2>
-<a id="ab4d7d907d66174179b05b244190ffb07" name="ab4d7d907d66174179b05b244190ffb07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4d7d907d66174179b05b244190ffb07">&#9670;&nbsp;</a></span>Message() <span class="overload">[1/2]</span></h2>
+<a id="ac5c901cc74e9c328ae32140d2653c1cb" name="ac5c901cc74e9c328ae32140d2653c1cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5c901cc74e9c328ae32140d2653c1cb">&#9670;&nbsp;</a></span>Message()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,39 +268,8 @@ Public 成员函数</h2></td></tr>
         <tr>
           <td class="memname">Message::Message </td>
           <td>(</td>
-          <td class="paramtype">QObject *&#160;</td>
-          <td class="paramname"><em>parent</em> = <code>nullptr</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>无参构造,采用这种构造方式之后， 需要调用<code><a class="el" href="classMessage.html#ad6cc31e67b950ead5be65fa458c58322" title="设置原始数据">setRawMsg()</a></code>和setMsgSender()手动设置其中的原始数据和消息发送者 </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">parent</td><td>默认为nullptr </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a82778c145082141c56d2638b9df38cdd" name="a82778c145082141c56d2638b9df38cdd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82778c145082141c56d2638b9df38cdd">&#9670;&nbsp;</a></span>Message() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Message::Message </td>
-          <td>(</td>
           <td class="paramtype">QString&#160;</td>
-          <td class="paramname"><em>msg</em>, </td>
+          <td class="paramname"><em>msg</em> = <code>&quot;&quot;</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -316,6 +289,11 @@ Public 成员函数</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>有参构造函数 </p>
@@ -478,8 +456,8 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
-<a id="a97ea88f43758b5f29f8981ba620c3c0f" name="a97ea88f43758b5f29f8981ba620c3c0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97ea88f43758b5f29f8981ba620c3c0f">&#9670;&nbsp;</a></span>getNum()</h2>
+<a id="a9272d260ba25b5582aa3b28e52dcb80c" name="a9272d260ba25b5582aa3b28e52dcb80c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9272d260ba25b5582aa3b28e52dcb80c">&#9670;&nbsp;</a></span>getNum()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -488,10 +466,13 @@ Public 成员函数</h2></td></tr>
           <td class="memname">int Message::getNum </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>获取数字消息的数字值 </p>
+<dl class="section return"><dt>返回</dt><dd>数字消息的数字值 </dd></dl>
 
 </div>
 </div>
@@ -512,6 +493,26 @@ Public 成员函数</h2></td></tr>
 
 <p>获取原始数据 </p>
 <dl class="section return"><dt>返回</dt><dd>Qstring类型的消息原始数据，若没有设置原始数据， 则返回空字符串 </dd></dl>
+
+</div>
+</div>
+<a id="a34425466132ab95f6d17d8c0bdd41f9a" name="a34425466132ab95f6d17d8c0bdd41f9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34425466132ab95f6d17d8c0bdd41f9a">&#9670;&nbsp;</a></span>getTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QTime Message::getTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取消息的发送时间 </p>
+<dl class="section return"><dt>返回</dt><dd>QTime格式的时间 </dd></dl>
 
 </div>
 </div>
