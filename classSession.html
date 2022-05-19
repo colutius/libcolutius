@@ -134,6 +134,16 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:afb689e2f0273d2b8fb70c93f8a443385"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSession.html#afb689e2f0273d2b8fb70c93f8a443385">addMessage</a> (<a class="el" href="classMessage.html">Message</a> *message)</td></tr>
 <tr class="memdesc:afb689e2f0273d2b8fb70c93f8a443385"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加消息并发射newMsg信号  <a href="classSession.html#afb689e2f0273d2b8fb70c93f8a443385">更多...</a><br /></td></tr>
 <tr class="separator:afb689e2f0273d2b8fb70c93f8a443385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3913846b042c3d42123623c4bf9c5808"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSession.html#a3913846b042c3d42123623c4bf9c5808">getType</a> ()</td></tr>
+<tr class="separator:a3913846b042c3d42123623c4bf9c5808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addf80877b3d4cdd3a2f7188b5639c37e"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="classMessage.html">Message</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSession.html#addf80877b3d4cdd3a2f7188b5639c37e">getMessageList</a> ()</td></tr>
+<tr class="separator:addf80877b3d4cdd3a2f7188b5639c37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bcfdaa8235f6d8352b3cfb87a2349be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMessage.html">Message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSession.html#a4bcfdaa8235f6d8352b3cfb87a2349be">getMessage</a> (int index)</td></tr>
+<tr class="memdesc:a4bcfdaa8235f6d8352b3cfb87a2349be"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据索引获取消息实例  <a href="classSession.html#a4bcfdaa8235f6d8352b3cfb87a2349be">更多...</a><br /></td></tr>
+<tr class="separator:a4bcfdaa8235f6d8352b3cfb87a2349be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23796f63fcbc7d7fbe8b162137594a8c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSession.html#a23796f63fcbc7d7fbe8b162137594a8c">getMessageNum</a> ()</td></tr>
+<tr class="memdesc:a23796f63fcbc7d7fbe8b162137594a8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取消息数量  <a href="classSession.html#a23796f63fcbc7d7fbe8b162137594a8c">更多...</a><br /></td></tr>
+<tr class="separator:a23796f63fcbc7d7fbe8b162137594a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
@@ -242,6 +252,70 @@ Protected 属性</h2></td></tr>
 
 </div>
 </div>
+<a id="a4bcfdaa8235f6d8352b3cfb87a2349be" name="a4bcfdaa8235f6d8352b3cfb87a2349be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bcfdaa8235f6d8352b3cfb87a2349be">&#9670;&nbsp;</a></span>getMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMessage.html">Message</a> * Session::getMessage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据索引获取消息实例 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>消息索引号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>Message类型的消息实例 </dd></dl>
+
+</div>
+</div>
+<a id="addf80877b3d4cdd3a2f7188b5639c37e" name="addf80877b3d4cdd3a2f7188b5639c37e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addf80877b3d4cdd3a2f7188b5639c37e">&#9670;&nbsp;</a></span>getMessageList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QList&lt; <a class="el" href="classMessage.html">Message</a> * &gt; Session::getMessageList </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23796f63fcbc7d7fbe8b162137594a8c" name="a23796f63fcbc7d7fbe8b162137594a8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23796f63fcbc7d7fbe8b162137594a8c">&#9670;&nbsp;</a></span>getMessageNum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Session::getMessageNum </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取消息数量 </p>
+<dl class="section return"><dt>返回</dt><dd>消息数量 </dd></dl>
+
+</div>
+</div>
 <a id="a1cd7ee30ac0e1ac24b3c338cd6ba1fa8" name="a1cd7ee30ac0e1ac24b3c338cd6ba1fa8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1cd7ee30ac0e1ac24b3c338cd6ba1fa8">&#9670;&nbsp;</a></span>getName()</h2>
 
@@ -259,6 +333,23 @@ Protected 属性</h2></td></tr>
 
 <p>获取会话名称 </p>
 <dl class="section return"><dt>返回</dt><dd>会话名称 </dd></dl>
+
+</div>
+</div>
+<a id="a3913846b042c3d42123623c4bf9c5808" name="a3913846b042c3d42123623c4bf9c5808"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3913846b042c3d42123623c4bf9c5808">&#9670;&nbsp;</a></span>getType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Session::getType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
