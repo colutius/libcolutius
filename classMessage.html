@@ -172,9 +172,9 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:abf5ef3d56cc6ac9b18c2fa1b34059e53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#abf5ef3d56cc6ac9b18c2fa1b34059e53">setNick</a> (QString nick)</td></tr>
 <tr class="memdesc:abf5ef3d56cc6ac9b18c2fa1b34059e53"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置消息发送者昵称  <a href="classMessage.html#abf5ef3d56cc6ac9b18c2fa1b34059e53">更多...</a><br /></td></tr>
 <tr class="separator:abf5ef3d56cc6ac9b18c2fa1b34059e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a045db2d415caa444480170588b181b"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#a4a045db2d415caa444480170588b181b">getChannel</a> ()</td></tr>
-<tr class="memdesc:a4a045db2d415caa444480170588b181b"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取频道名  <a href="classMessage.html#a4a045db2d415caa444480170588b181b">更多...</a><br /></td></tr>
-<tr class="separator:a4a045db2d415caa444480170588b181b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42f730077a3506158563b653b36df60f"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#a42f730077a3506158563b653b36df60f">getSession</a> ()</td></tr>
+<tr class="memdesc:a42f730077a3506158563b653b36df60f"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取会话名  <a href="classMessage.html#a42f730077a3506158563b653b36df60f">更多...</a><br /></td></tr>
+<tr class="separator:a42f730077a3506158563b653b36df60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa55a14be6378712f457137bd897cdd20"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#aa55a14be6378712f457137bd897cdd20">getNick</a> ()</td></tr>
 <tr class="memdesc:aa55a14be6378712f457137bd897cdd20"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取消息发送者昵称  <a href="classMessage.html#aa55a14be6378712f457137bd897cdd20">更多...</a><br /></td></tr>
 <tr class="separator:aa55a14be6378712f457137bd897cdd20"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,6 +187,9 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a34425466132ab95f6d17d8c0bdd41f9a"><td class="memItemLeft" align="right" valign="top">QTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#a34425466132ab95f6d17d8c0bdd41f9a">getTime</a> ()</td></tr>
 <tr class="memdesc:a34425466132ab95f6d17d8c0bdd41f9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取消息的发送时间  <a href="classMessage.html#a34425466132ab95f6d17d8c0bdd41f9a">更多...</a><br /></td></tr>
 <tr class="separator:a34425466132ab95f6d17d8c0bdd41f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05ba47a91bf98560044c9c52fb053e59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMessage.html#a05ba47a91bf98560044c9c52fb053e59">setSession</a> (QString session)</td></tr>
+<tr class="memdesc:a05ba47a91bf98560044c9c52fb053e59"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置消息所在会话  <a href="classMessage.html#a05ba47a91bf98560044c9c52fb053e59">更多...</a><br /></td></tr>
+<tr class="separator:a05ba47a91bf98560044c9c52fb053e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p >IRC消息类 将原始数据传入其中，由该类对接收到的消息进行解析、分类、格式化 </p>
@@ -336,26 +339,6 @@ Public 成员函数</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
-<a id="a4a045db2d415caa444480170588b181b" name="a4a045db2d415caa444480170588b181b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a045db2d415caa444480170588b181b">&#9670;&nbsp;</a></span>getChannel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QString Message::getChannel </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>获取频道名 </p>
-<dl class="section return"><dt>返回</dt><dd>消息所在频道名 </dd></dl>
-
-</div>
-</div>
 <a id="a87dcb7cbbdfaf266cd2a428802bdaa49" name="a87dcb7cbbdfaf266cd2a428802bdaa49"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87dcb7cbbdfaf266cd2a428802bdaa49">&#9670;&nbsp;</a></span>getIp()</h2>
 
@@ -496,6 +479,26 @@ Public 成员函数</h2></td></tr>
 
 </div>
 </div>
+<a id="a42f730077a3506158563b653b36df60f" name="a42f730077a3506158563b653b36df60f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42f730077a3506158563b653b36df60f">&#9670;&nbsp;</a></span>getSession()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Message::getSession </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取会话名 </p>
+<dl class="section return"><dt>返回</dt><dd>消息所在会话名 </dd></dl>
+
+</div>
+</div>
 <a id="a34425466132ab95f6d17d8c0bdd41f9a" name="a34425466132ab95f6d17d8c0bdd41f9a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34425466132ab95f6d17d8c0bdd41f9a">&#9670;&nbsp;</a></span>getTime()</h2>
 
@@ -633,6 +636,32 @@ Public 成员函数</h2></td></tr>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">msg</td><td>接收到的原始数据或即将发送的原始数据 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a05ba47a91bf98560044c9c52fb053e59" name="a05ba47a91bf98560044c9c52fb053e59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05ba47a91bf98560044c9c52fb053e59">&#9670;&nbsp;</a></span>setSession()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Message::setSession </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>session</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置消息所在会话 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>会话名称 </td></tr>
   </table>
   </dd>
 </dl>

@@ -20,7 +20,6 @@ var classMessage =
     ] ],
     [ "Message", "classMessage.html#ac5c901cc74e9c328ae32140d2653c1cb", null ],
     [ "~Message", "classMessage.html#aefaeef0caed942ae0920bea838065b0a", null ],
-    [ "getChannel", "classMessage.html#a4a045db2d415caa444480170588b181b", null ],
     [ "getIp", "classMessage.html#a87dcb7cbbdfaf266cd2a428802bdaa49", null ],
     [ "getMainMsg", "classMessage.html#a73d73c688a8514e7c67286ef0ec91c1f", null ],
     [ "getMsgSender", "classMessage.html#aae1bc27a637ea423edf95e6265d916e4", null ],
@@ -28,10 +27,12 @@ var classMessage =
     [ "getNick", "classMessage.html#aa55a14be6378712f457137bd897cdd20", null ],
     [ "getNum", "classMessage.html#a9272d260ba25b5582aa3b28e52dcb80c", null ],
     [ "getRawMsg", "classMessage.html#a68aef9a3611426c332608c6bda53ad8d", null ],
+    [ "getSession", "classMessage.html#a42f730077a3506158563b653b36df60f", null ],
     [ "getTime", "classMessage.html#a34425466132ab95f6d17d8c0bdd41f9a", null ],
     [ "parse", "classMessage.html#a0d00f328a94b51a4482826525be45eac", null ],
     [ "setMsgSender", "classMessage.html#ac19afd652d4cd3868785fa8f44ae7a49", null ],
     [ "setMsgType", "classMessage.html#a7fa5472aede90589df728d9e3901c0b8", null ],
     [ "setNick", "classMessage.html#abf5ef3d56cc6ac9b18c2fa1b34059e53", null ],
-    [ "setRawMsg", "classMessage.html#ad6cc31e67b950ead5be65fa458c58322", null ]
+    [ "setRawMsg", "classMessage.html#ad6cc31e67b950ead5be65fa458c58322", null ],
+    [ "setSession", "classMessage.html#a05ba47a91bf98560044c9c52fb053e59", null ]
 ];
