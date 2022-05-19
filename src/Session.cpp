@@ -42,7 +42,7 @@ QString Session::getType()
 }
 QList<Message *> Session::getMessageList()
 {
-    return QList<Message *>();
+    return this->_messageList;
 }
 /**
  * @brief 根据索引获取消息实例

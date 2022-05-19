@@ -26,7 +26,10 @@ class Session : public QObject
 
     QString getName();                 //获取会话名称
     void addMessage(Message *message); //添加消息
-
+    QString getType();                 //获取会话类型
+    QList<Message *> getMessageList(); //获取消息列表
+    Message *getMessage(int index);    //获取指定消息实例
+    int getMessageNum();               //获取消息数量
   protected:
     QList<Message *> _messageList; //消息列表
     QString _name;                 //会话名称
