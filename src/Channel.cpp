@@ -13,4 +13,8 @@
 Channel::Channel(QString name, Session *parent) : Session(std::move(name), parent)
 {
 }
+QString Channel::getType()
+{
+    return "Channel";
+}
 Channel::~Channel() = default;

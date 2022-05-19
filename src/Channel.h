@@ -20,4 +20,6 @@ class Channel : public Session
   public:
     explicit Channel(QString name, Session *parent = nullptr);
     ~Channel() override;
+
+    QString getType();
 };

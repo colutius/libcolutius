@@ -134,6 +134,7 @@ void Message::parse()
             //数字指令
             if (isNum.validate(buf[1], pos) == QValidator::Acceptable)
             {
+                this->_session = buf[3];
                 this->setMsgType(Type::Num);
                 this->_num = buf[1].toInt();
                 this->parseMainMsg(this->getRawMsg(), 2);
@@ -170,7 +171,7 @@ void Message::parse()
             if (buf[2][0] == '#')
             {
                 this->setMsgType(Type::Channel);
-                this->_channel = buf[2];
+                this->_session = buf[2];
                 this->parseMainMsg(this->getRawMsg(), 3);
                 this->parseMsgSender(buf[0]);
                 break;
@@ -188,6 +189,7 @@ void Message::parse()
         if (buf[0][0] != '/')
         {
             //这里无法判断是频道消息还是私信消息，需要外部手动设置
+            this->setMsgType(None);
             this->_mainMsg = this->getRawMsg();
             break;
         }
@@ -205,11 +207,13 @@ void Message::parse()
                     if (buf[1][0] == '#')
                     {
                         this->setMsgType(Type::Channel);
+                        this->_session = buf[1];
                         this->parseMainMsg(this->getRawMsg(), 2);
                     }
                     else
                     {
                         this->setMsgType(Type::Private);
+                        this->_session = buf[1];
                         this->parseMainMsg(this->getRawMsg(), 2);
                     }
                 }
@@ -224,7 +228,7 @@ void Message::parse()
                 }
                 else
                 {
-                    this->_channel = buf[1];
+                    this->_session = buf[1];
                     this->setMsgType(Type::Join);
                 }
                 break;
@@ -288,7 +292,7 @@ void Message::parseMsgSender(const QString &msg)
     {
         buf[0] = buf[0].remove(0, 1);
     }
-    this->_nick = buf[0];
+    this->setNick(buf[0]);
     buf = msg.split("@");
     this->_ip = buf[1];
 }
@@ -301,12 +305,12 @@ void Message::setNick(QString nick)
     this->_nick = std::move(nick);
 }
 /**
- * @brief 获取频道名
- * @return 消息所在频道名
+ * @brief 获取会话名
+ * @return 消息所在会话名
  */
-QString Message::getChannel()
+QString Message::getSession()
 {
-    return this->_channel;
+    return this->_session;
 }
 /**
  * @brief 获取消息发送者昵称
@@ -346,4 +350,11 @@ int Message::getNum() const
 QTime Message::getTime()
 {
     return this->_msgTime;
+}
+/**
+ * @brief 设置消息所在会话
+ * @param session 会话名称
+ */
+void Message::setSession(QString session){
+    this->_session=session;
 }

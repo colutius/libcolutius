@@ -42,6 +42,7 @@ Server::Server(Server::Type type, QString host, int port, QString nick, QString 
  */
 Server::~Server()
 {
+    _sendData("QUIT :Client Quit");
     //断开连接
     this->disconnect();
 }
@@ -177,6 +178,7 @@ void Server::receiveData()
         {
             continue;
         }
+        qDebug() << i;
         //创建消息实例
         auto *message = new Message(i);
         //按消息发送者分类处理
@@ -189,19 +191,15 @@ void Server::receiveData()
             {
             case Message::None:
                 this->_messageList.append(message);
-                qDebug() << message->getRawMsg();
                 break;
             case Message::Ping:
                 _sendData("PONG :" + message->getMainMsg());
-                qDebug() << "Ping?PONG!";
                 break;
             case Message::Error:
                 this->_messageList.append(message);
-                qDebug() << "ERROR " + message->getMainMsg();
                 break;
             case Message::Notice:
                 this->_messageList.append(message);
-                qDebug() << "NOTICE " + message->getMainMsg();
                 break;
             case Message::Num:
                 //按数字值分别处理
@@ -211,7 +209,7 @@ void Server::receiveData()
                     emit loginSuccess();
                     break;
                 case 366:
-                    emit addSessionCallBack();
+                    emit addSessionCallBack(message->getSession());
                     break;
                 default:
                     break;
@@ -219,7 +217,6 @@ void Server::receiveData()
                 break;
             default:
                 this->_messageList.append(message);
-                qDebug() << message->getRawMsg();
                 break;
             }
             break;
@@ -240,7 +237,7 @@ void Server::receiveData()
             }
             else
             {
-                QString channel = message->getChannel();
+                QString channel = message->getSession();
                 foreach (auto *session, this->_sessionList)
                 {
                     if (session->getName() == channel)
@@ -292,7 +289,7 @@ void Server::addSession(const QString &name)
     //发送加入信息
     this->_sendData("JOIN " + name);
     //会话加入成功
-    connect(this, SIGNAL(addSessionCallBack), this, SLOT(_addSessionCallBack(name)));
+    connect(this, &Server::addSessionCallBack, this, &Server::_addSessionCallBack);
 }
 /**
  * @brief 添加会话成功
@@ -312,4 +309,106 @@ void Server::_addSessionCallBack(QString name)
     this->_sessionList.append(newSession);
     //发射成功信号
     emit addSessionSucess();
+}
+/**
+ * @brief 获取服务器消息列表
+ * @return QList类型的消息列表
+ */
+QList<Message *> Server::getMessageList()
+{
+    return this->_messageList;
+}
+/**
+ * @brief 获取服务器会话列表
+ * @return QList类型的会话列表
+ */
+QList<Session *> Server::getSessionList()
+{
+    return this->_sessionList;
+}
+/**
+ * @brief 获取服务器消息数目
+ * @return 消息数目
+ */
+int Server::getMessageNum()
+{
+    return this->_sessionList.length();
+}
+/**
+ * @brief 获取服务器会话数目
+ * @return 会话数目
+ */
+int Server::getSessionNum()
+{
+    return this->_sessionList.length();
+}
+/**
+ * @brief 发送消息
+ * @param message Message类型的消息实例
+ * @param session 消息要发送到的会话
+ */
+void Server::sendMsg(Message *message)
+{
+    if(message->getSession().isEmpty()){
+        qDebug()<<"发送消息没有设置session";
+        return;
+    }
+    if(message->getMsgSender() != Message::Owner){
+        qDebug()<<"该消息发送者不是Owner";
+        return;
+    }
+    if (message->getMsgType() == Message::None)
+    {
+        if(message->getSession()[0]=='#'){
+            message->setMsgType(Message::Channel);
+        }else{
+            message->setMsgType(Message::Private);
+        }
+    }
+    this->_sendData("PRIVMSG " + message->getSession() + " :" + message->getMainMsg());
+}
+/**
+ * @brief 根据索引获取消息实例
+ * @param index 消息索引号
+ * @return Message类型的消息实例
+ */
+Message *Server::getMessage(int index)
+{
+    if (index < 0 || index >= this->getMessageNum())
+    {
+        qDebug() << "服务器消息列表索引越界";
+        return nullptr;
+    }
+    return this->_messageList[index];
+}
+/**
+ * @brief 根据索引获取会话实例
+ * @param index 会话索引号
+ * @return Session类型的会话实例
+ */
+Session *Server::getSession(int index)
+{
+    if (index < 0 || index >= this->getSessionNum())
+    {
+        qDebug() << "服务器会话列表索引越界";
+        return nullptr;
+    }
+    return this->_sessionList[index];
+}
+/**
+ * @brief 根据会话名称获取会话实例
+ * @param name 会话名称
+ * @return 如果会话存在，返回Session类型的会话实例，否则返回nullptr
+ */
+Session *Server::getSession(QString name)
+{
+    foreach (Session *session, this->_sessionList)
+    {
+        if (session->getName() == name)
+        {
+            return session;
+        }
+    }
+    qDebug() << "会话不存在";
+    return nullptr;
 }

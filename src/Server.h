@@ -26,13 +26,13 @@ class Server : public QObject
 {
     Q_OBJECT
   signals:
-    void loginSuccess();       ///<服务器连接成功
-    void loginFail();          ///<服务器连接失败
-    void disconnected();       ///<服务器断开连接
-    void networkError();       ///<网络未连接
-    void networkOk();          ///<网络已连接
-    void addSessionSucess();   ///<会话加入成功
-    void addSessionCallBack(); ///<内部信号
+    void loginSuccess();                   ///<服务器连接成功
+    void loginFail();                      ///<服务器连接失败
+    void disconnected();                   ///<服务器断开连接
+    void networkError();                   ///<网络未连接
+    void networkOk();                      ///<网络已连接
+    void addSessionSucess();               ///<会话加入成功
+    void addSessionCallBack(QString name); ///<内部信号
   public:
     /**
      * @brief 服务器当前状态
@@ -64,6 +64,14 @@ class Server : public QObject
     QString getHost();                    //获取服务器地址
     void receiveData();                   //接收数据
     void addSession(const QString &name); //添加会话
+    QList<Message *> getMessageList();    //获取消息列表
+    Message *getMessage(int index);       //获取消息实例
+    Session *getSession(int index);       //获取会话实例
+    Session *getSession(QString name);    //获取会话实例
+    QList<Session *> getSessionList();    //获取会话列表
+    int getMessageNum();                  //获取消息数目
+    int getSessionNum();                  //获取会话数目
+    void sendMsg(Message *message);       //向指定会话发送消息
   private slots:
     void _checkNetWork(const QHostInfo &host); //检查网络连接情况
     void _addSessionCallBack(QString name);    //添加会话回调

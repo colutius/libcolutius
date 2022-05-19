@@ -20,4 +20,6 @@ class User : public Session
   public:
     explicit User(QString name, Session *parent = nullptr);
     ~User() override;
+
+    QString getType();
 };

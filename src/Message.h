@@ -60,11 +60,12 @@ class Message : public QObject
     QString getMainMsg();             //获取主体信息
     void setMsgType(Type type);       //设置消息类型
     void setNick(QString nick);       //设置消息发送者昵称
-    QString getChannel();             //获取频道名称
+    QString getSession();             //获取会话名称
     QString getNick();                //获取发送者昵称
     QString getIp();                  //获取发送者IP
     int getNum() const;               //获取数字
     QTime getTime();                  //获取消息发送时间
+    void setSession(QString session);//设置消息所在会话
 
   private:
     void parseMsgSender(const QString &msg);          //解析消息发送者信息
@@ -74,7 +75,7 @@ class Message : public QObject
     Sender _sender;                                   //消息发送者
     QString _rawMsg;                                  //原始数据
     QString _mainMsg;                                 //消息主体信息
-    QString _channel;                                 //消息发送到的频道
+    QString _session;                                 //消息所在会话
     QString _nick;                                    //消息发送者昵称
     QString _ip;                                      //消息发送者ip
     int _num;                                         //数字指令消息的数字

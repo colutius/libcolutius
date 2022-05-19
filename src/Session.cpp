@@ -9,10 +9,16 @@
  *
  */
 #include "Session.h"
+/**
+ * @brief 构造函数
+ * @param name 会话名称
+ * @param parent 默认为nullptr
+ */
 Session::Session(QString name, QObject *parent) : QObject(parent)
 {
     this->_name = std::move(name);
 }
+Session::~Session() = default;
 /**
  * @brief 获取会话名称
  * @return 会话名称
@@ -30,4 +36,33 @@ void Session::addMessage(Message *message)
     this->_messageList.append(message);
     emit newMsg();
 }
-Session::~Session() = default;
+QString Session::getType()
+{
+    return "Session";
+}
+QList<Message *> Session::getMessageList()
+{
+    return QList<Message *>();
+}
+/**
+ * @brief 根据索引获取消息实例
+ * @param index 消息索引号
+ * @return Message类型的消息实例
+ */
+Message *Session::getMessage(int index)
+{
+    if (index < 0 || index >= this->getMessageNum())
+    {
+        qDebug() << "会话消息列表索引越界";
+        return nullptr;
+    }
+    return this->_messageList[index];
+}
+/**
+ * @brief 获取消息数量
+ * @return 消息数量
+ */
+int Session::getMessageNum()
+{
+    return this->_messageList.length();
+}

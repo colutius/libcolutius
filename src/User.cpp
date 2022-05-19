@@ -13,4 +13,8 @@
 User::User(QString name, Session *parent) : Session(std::move(name), parent)
 {
 }
+QString User::getType()
+{
+    return "User";
+}
 User::~User() = default;
