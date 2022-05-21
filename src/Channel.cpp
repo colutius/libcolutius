@@ -17,4 +17,8 @@ QString Channel::getType()
 {
     return "Channel";
 }
+void Channel::quit()
+{
+    emit _quit(this->getName());
+}
 Channel::~Channel() = default;

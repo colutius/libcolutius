@@ -301,6 +301,7 @@ void Server::_addSessionCallBack(QString name)
     if (name[0] == '#')
     {
         newSession = new Channel(name);
+        connect(newSession, &Channel::_quit, this, &Server::_deleteSession);
     }
     else
     {
@@ -343,25 +344,31 @@ int Server::getSessionNum()
     return this->_sessionList.length();
 }
 /**
- * @brief 发送消息
+ * @brief 发送消息,传入的Message实例一定要手动设置session
  * @param message Message类型的消息实例
  * @param session 消息要发送到的会话
  */
 void Server::sendMsg(Message *message)
 {
-    if(message->getSession().isEmpty()){
-        qDebug()<<"发送消息没有设置session";
+    message->setNick(this->getNick());
+    if (message->getSession().isEmpty())
+    {
+        qWarning("发送消息没有设置session");
         return;
     }
-    if(message->getMsgSender() != Message::Owner){
-        qDebug()<<"该消息发送者不是Owner";
+    if (message->getMsgSender() != Message::Owner)
+    {
+        qWarning("该消息发送者不是Owner");
         return;
     }
     if (message->getMsgType() == Message::None)
     {
-        if(message->getSession()[0]=='#'){
+        if (message->getSession()[0] == '#')
+        {
             message->setMsgType(Message::Channel);
-        }else{
+        }
+        else
+        {
             message->setMsgType(Message::Private);
         }
     }
@@ -411,4 +418,19 @@ Session *Server::getSession(QString name)
     }
     qDebug() << "会话不存在";
     return nullptr;
+}
+/**
+ * @brief 从会话列表中删除会话
+ * @param name 会话名称
+ */
+void Server::_deleteSession(QString name)
+{
+    this->_sendData("QUIT " + name);
+    for (int i = 0; i < this->getSessionNum(); i++)
+    {
+        if (this->_sessionList[i]->getName() == name)
+        {
+            this->_sessionList.removeAt(i);
+        }
+    }
 }

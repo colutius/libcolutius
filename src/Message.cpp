@@ -125,7 +125,7 @@ void Message::parse()
             this->parseMainMsg(this->getRawMsg(), 1);
             break;
         }
-        if (buf.length() > 1)
+        if (buf.length() > 3)
         {
             //判断是否为数字指令
             QRegularExpression num("[0-9].*");
@@ -137,14 +137,14 @@ void Message::parse()
                 this->_session = buf[3];
                 this->setMsgType(Type::Num);
                 this->_num = buf[1].toInt();
-                this->parseMainMsg(this->getRawMsg(), 2);
+                this->parseMainMsg(this->getRawMsg(), 3);
                 break;
             }
             // NOTICE消息
             if (buf[1] == "NOTICE")
             {
                 this->setMsgType(Type::Notice);
-                this->parseMainMsg(this->getRawMsg(), 2);
+                this->parseMainMsg(this->getRawMsg(), 3);
                 break;
             }
         }
@@ -156,14 +156,16 @@ void Message::parse()
         {
             this->setMsgType(Type::Join);
             this->parseMainMsg(this->getRawMsg(), 2);
-            this->parseMsgSender(buf[0]);
+            this->parseNick(buf[0]);
+            this->setSession(buf[2]);
             break;
         }
         if (buf[1] == "QUIT")
         {
             this->setMsgType(Type::Quit);
             this->parseMainMsg(this->getRawMsg(), 2);
-            this->parseMsgSender(buf[0]);
+            this->parseNick(buf[0]);
+            this->setSession(buf[2]);
             break;
         }
         if (buf[1] == "PRIVMSG")
@@ -171,16 +173,17 @@ void Message::parse()
             if (buf[2][0] == '#')
             {
                 this->setMsgType(Type::Channel);
-                this->_session = buf[2];
+                this->setSession(buf[2]);
                 this->parseMainMsg(this->getRawMsg(), 3);
-                this->parseMsgSender(buf[0]);
+                this->parseNick(buf[0]);
                 break;
             }
             else
             {
                 this->setMsgType(Type::Private);
                 this->parseMainMsg(this->getRawMsg(), 3);
-                this->parseMsgSender(buf[0]);
+                this->parseNick(buf[0]);
+                this->setSession(buf[2]);
                 break;
             }
         }
@@ -199,7 +202,7 @@ void Message::parse()
             {
                 if (buf.length() < 3)
                 {
-                    qDebug() << "指令不合法";
+                    qWarning("指令不合法");
                     this->setMsgType(Type::None);
                 }
                 else
@@ -223,7 +226,7 @@ void Message::parse()
             {
                 if (buf.length() < 2)
                 {
-                    qDebug() << "指令不合法";
+                    qDebug("指令不合法");
                     this->setMsgType(Type::None);
                 }
                 else
@@ -284,7 +287,7 @@ QString Message::getMainMsg()
  * 例如：colutius!~colutius@123.123 PRIVMSG #colutius :hello?
  * 传入colutius!~colutius@123.123即可
  */
-void Message::parseMsgSender(const QString &msg)
+void Message::parseNick(const QString &msg)
 {
     QStringList buf = msg.split("!");
     //去除头部冒号
@@ -333,7 +336,8 @@ QString Message::getIp()
  */
 void Message::setTime()
 {
-    this->_msgTime = QTime::currentTime();
+    QDateTime time = QDateTime::currentDateTime();
+    this->_msgTime = int(time.toSecsSinceEpoch());
 }
 /**
  * @brief 获取数字消息的数字值
@@ -347,7 +351,7 @@ int Message::getNum() const
  * @brief 获取消息的发送时间
  * @return QTime格式的时间
  */
-QTime Message::getTime()
+int Message::getTime()
 {
     return this->_msgTime;
 }
@@ -355,6 +359,7 @@ QTime Message::getTime()
  * @brief 设置消息所在会话
  * @param session 会话名称
  */
-void Message::setSession(QString session){
-    this->_session=session;
+void Message::setSession(QString session)
+{
+    this->_session = session;
 }

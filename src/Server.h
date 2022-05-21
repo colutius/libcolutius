@@ -75,6 +75,7 @@ class Server : public QObject
   private slots:
     void _checkNetWork(const QHostInfo &host); //检查网络连接情况
     void _addSessionCallBack(QString name);    //添加会话回调
+    void _deleteSession(QString name);
 
   private:
     void _sendData(const QString &data); //向服务器发送数据
