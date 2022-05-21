@@ -15,6 +15,6 @@ var searchData=
   ['getsession_12',['getSession',['../classMessage.html#a42f730077a3506158563b653b36df60f',1,'Message::getSession()'],['../classServer.html#a4ca6cb90eca9ed6e0fd85bbdd58142bd',1,'Server::getSession(int index)'],['../classServer.html#a8760ec9b6e525d8eec56fe5899d62565',1,'Server::getSession(QString name)']]],
   ['getsessionlist_13',['getSessionList',['../classServer.html#a746368a8ccdf660bc8c5b7fec5913db5',1,'Server']]],
   ['getsessionnum_14',['getSessionNum',['../classServer.html#acc7b67033d7faf54cd3be2e9ce94970d',1,'Server']]],
-  ['gettime_15',['getTime',['../classMessage.html#a34425466132ab95f6d17d8c0bdd41f9a',1,'Message']]],
+  ['gettime_15',['getTime',['../classMessage.html#a0a076c2ae0bef9b65e1a97fc2f419797',1,'Message']]],
   ['gettype_16',['getType',['../classChannel.html#a464637ee342a2b3358b39bc7bb867b81',1,'Channel::getType()'],['../classSession.html#a3913846b042c3d42123623c4bf9c5808',1,'Session::getType()'],['../classUser.html#a7c7f55b802012dcb9b521b9a54e65750',1,'User::getType()']]]
 ];

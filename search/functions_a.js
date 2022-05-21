@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['user_0',['User',['../classUser.html#abd6bf5264d28a6cce44d11036fda380d',1,'User']]]
+  ['receivedata_0',['receiveData',['../classServer.html#a7f1ec52f8b76d14574950a1bfe7d7033',1,'Server']]]
 ];

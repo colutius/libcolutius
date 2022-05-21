@@ -28,7 +28,7 @@ var classMessage =
     [ "getNum", "classMessage.html#a9272d260ba25b5582aa3b28e52dcb80c", null ],
     [ "getRawMsg", "classMessage.html#a68aef9a3611426c332608c6bda53ad8d", null ],
     [ "getSession", "classMessage.html#a42f730077a3506158563b653b36df60f", null ],
-    [ "getTime", "classMessage.html#a34425466132ab95f6d17d8c0bdd41f9a", null ],
+    [ "getTime", "classMessage.html#a0a076c2ae0bef9b65e1a97fc2f419797", null ],
     [ "parse", "classMessage.html#a0d00f328a94b51a4482826525be45eac", null ],
     [ "setMsgSender", "classMessage.html#ac19afd652d4cd3868785fa8f44ae7a49", null ],
     [ "setMsgType", "classMessage.html#a7fa5472aede90589df728d9e3901c0b8", null ],
