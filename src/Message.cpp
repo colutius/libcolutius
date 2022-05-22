@@ -249,7 +249,9 @@ void Message::parseMainMsg(const QString &msg, int index)
     QStringList buf = msg.split(" ");
     if (index < 0 || index >= buf.length())
     {
-        qDebug() << "索引不合法";
+        qWarning() << "mainMsg索引不合法";
+        parseMainMsg(msg, 0);
+        return;
     }
     //去除头部的冒号
     if (buf[index][0] == ':')
