@@ -26,7 +26,7 @@ class Server : public QObject
 {
     Q_OBJECT
   signals:
-    void loginSuccess();                   ///<服务器连接成功
+    void loginSuccess(Server *server);     ///<服务器连接成功
     void loginFail();                      ///<服务器连接失败
     void disconnected();                   ///<服务器断开连接
     void networkError();                   ///<网络未连接

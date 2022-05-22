@@ -206,7 +206,7 @@ void Server::receiveData()
                 switch (message->getNum())
                 {
                 case 376:
-                    emit loginSuccess();
+                    emit loginSuccess(this);
                     break;
                 case 366:
                     emit addSessionCallBack(message->getSession());
