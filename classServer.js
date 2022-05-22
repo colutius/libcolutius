@@ -26,7 +26,7 @@ var classServer =
     [ "getSessionNum", "classServer.html#acc7b67033d7faf54cd3be2e9ce94970d", null ],
     [ "login", "classServer.html#ae7a5e86a75996f403293f96d6e8f8778", null ],
     [ "loginFail", "classServer.html#ad9fb2dd8378779e1d83febada00c73a4", null ],
-    [ "loginSuccess", "classServer.html#a2b52f2df0d2a9c55f9152ca85e1dbcf7", null ],
+    [ "loginSuccess", "classServer.html#abd22b01a5cd38f8aa4b549017a2523e3", null ],
     [ "networkError", "classServer.html#aa41860d4665f38917ee939bd5b7b359f", null ],
     [ "networkOk", "classServer.html#a3d6f1ef043956f0099e94d0be046b543", null ],
     [ "receiveData", "classServer.html#a7f1ec52f8b76d14574950a1bfe7d7033", null ],
