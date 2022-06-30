@@ -24,3 +24,4 @@ jobs:
             📦仓库: ${{ github.repository }}
 
             🗓每日一言: ${{ env.YIYAN }}
+          is_notify: false
