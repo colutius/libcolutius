@@ -9,6 +9,7 @@
  *
  */
 #include "Message.h"
+#include <qglobal.h>
 /**
  * @brief 有参构造函数
  * @param msg 接收到的原始数据或即将发送的原始数据
@@ -17,351 +18,234 @@
  * 注意:用户发送的消息必须传入Owner或手动设置为Owner
  * @param parent 默认为nullptr
  */
-Message::Message(QString msg, Message::Sender sender, QObject *parent) : QObject(parent)
+Message::Message(QObject *parent) : QObject(parent)
 {
-    this->setMsgSender(sender);
-    this->setRawMsg(std::move(msg));
-    this->setTime();
 }
+
 /**
  * @brief 默认析构函数
  */
 Message::~Message() = default;
-/**
- * @brief 设置原始数据
- * @param msg 接收到的原始数据或即将发送的原始数据
- */
-void Message::setRawMsg(QString msg)
+Message::Type Message::msgType()
 {
-    this->_rawMsg = std::move(msg);
-    this->parse();
+    return this->_msgType;
 }
-/**
- * @brief 获取原始数据
- * @return Qstring类型的消息原始数据，若没有设置原始数据，
- * 则返回空字符串
- */
-QString Message::getRawMsg()
+Message *Message::msgType(Type type)
 {
-    if (!this->_rawMsg.isEmpty())
-    {
-        return this->_rawMsg;
-    }
-    else
-    {
-        return "";
-    }
+    this->_msgType = type;
+    return this;
 }
-/**
- * @brief 设置消息类型
- * @param type 选择msgType中的枚举值
- */
-void Message::setMsgType(Message::Type type)
+QString Message::typeStr()
 {
-    this->_type = type;
+    return this->_typeStr;
 }
-/**
- * @brief 获取此消息的类型
- * @return Message::MsgType类型的消息的类型
- */
-Message::Type Message::getMsgType()
+Message *Message::typeStr(QString type)
 {
-    return this->_type;
+    this->_typeStr = type;
+    return this;
 }
-/**
- * @brief 设置消息的发送者
- * @param sender 选择msgSender中的枚举值
- */
-void Message::setMsgSender(Message::Sender sender)
+QString Message::server()
 {
-    this->_sender = sender;
+    return this->_server;
 }
-/**
- * @brief 获取此消息的发送者
- * @return Message::MsgSender类型的消息发送者
- */
-Message::Sender Message::getMsgSender()
+Message *Message::server(QString server)
 {
-    return this->_sender;
+    this->_server = server;
+    return this;
 }
-/**
- * @brief 解析消息原始数据，
- * 一般情况下，不需要手动调用，在设置了原始数据之后会自动调用
- */
-void Message::parse()
+Message::Who Message::from()
+{
+    return this->_from;
+}
+Message *Message::from(Who from)
+{
+    this->_from = from;
+    return this;
+}
+QString Message::fromName()
+{
+    return this->_fromName;
+}
+Message *Message::fromName(QString fromName)
+{
+    this->_fromName = fromName;
+    return this;
+}
+Message::Who Message::to()
+{
+    return this->_to;
+}
+Message *Message::to(Who to)
+{
+    this->_to = to;
+    return this;
+}
+QString Message::toName()
+{
+    return this->_toName;
+}
+Message *Message::toName(QString toName)
+{
+    this->_toName = toName;
+    return this;
+}
+QString Message::rawMsg()
+{
+    return this->_rawMsg;
+}
+Message *Message::rawMsg(QString rawMsg)
+{
+    this->_rawMsg = rawMsg;
+    return this;
+}
+QString Message::mainMsg()
+{
+    return this->_mainMsg;
+}
+Message *Message::mainMsg(QString mainMsg)
+{
+    this->_mainMsg = mainMsg;
+    return this;
+}
+QString Message::myNick()
+{
+    return this->_myNick;
+}
+Message *Message::myNick(QString myNick)
+{
+    this->_myNick = myNick;
+    return this;
+}
+int Message::time()
+{
+    return this->_time;
+}
+Message *Message::parse()
 {
     //分割原始数据
-    QStringList buf = this->getRawMsg().split(" ");
-    //如果不是用户自己发送的消息，解析之前无法确切知道是服务器消息还是用户消息
-    if (this->getMsgSender() != Owner)
+    QStringList buf = this->rawMsg().split(" ");
+    int n = 0;
+    foreach (auto msg, buf)
     {
-        //匹配用户消息的头部
-        QRegularExpression user(".*!.*@.*");
-        QRegularExpressionValidator isUser(user);
-        int pos = 0;
-        if (isUser.validate(buf[0], pos) == QValidator::Acceptable)
+        switch (n)
         {
-            this->setMsgSender(Sender::User);
-        }
-        else
-        {
-            this->setMsgSender(Sender::Server);
-        }
-    }
-    switch (this->getMsgSender())
-    {
-    case Server:
-        // PING消息
-        if (buf[0] == "PING")
-        {
-            this->setMsgType(Type::Ping);
-            this->parseMainMsg(this->getRawMsg(), 1);
-            break;
-        }
-        // ERROR消息
-        if (buf[0] == "ERROR")
-        {
-            this->setMsgType(Type::Error);
-            this->parseMainMsg(this->getRawMsg(), 1);
-            break;
-        }
-        if (buf.length() > 3)
-        {
-            //判断是否为数字指令
-            QRegularExpression num("[0-9].*");
-            QRegularExpressionValidator isNum(num);
-            int pos = 0;
-            //数字指令
-            if (isNum.validate(buf[1], pos) == QValidator::Acceptable)
+        case 0: {
+            n++;
+            if (msg == "PING" || msg == "ERROR")
             {
-                this->_session = buf[3];
-                this->setMsgType(Type::Num);
-                this->_num = buf[1].toInt();
-                this->parseMainMsg(this->getRawMsg(), 3);
-                break;
+                parseSpecial(msg);
+                return this;
             }
-            // NOTICE消息
-            if (buf[1] == "NOTICE")
+            else if (buf.count() <= 3)
             {
-                this->setMsgType(Type::Notice);
-                this->parseMainMsg(this->getRawMsg(), 3);
-                break;
-            }
-        }
-        this->setMsgType(Type::None);
-        this->parseMainMsg(this->getRawMsg(), 0);
-        break;
-    case User:
-        if (buf[1] == "JOIN")
-        {
-            this->setMsgType(Type::Join);
-            this->parseMainMsg(this->getRawMsg(), 2);
-            this->parseNick(buf[0]);
-            this->setSession(buf[2]);
-            break;
-        }
-        if (buf[1] == "QUIT")
-        {
-            this->setMsgType(Type::Quit);
-            this->parseMainMsg(this->getRawMsg(), 2);
-            this->parseNick(buf[0]);
-            this->setSession(buf[2]);
-            break;
-        }
-        if (buf[1] == "PRIVMSG")
-        {
-            if (buf[2][0] == '#')
-            {
-                this->setMsgType(Type::Channel);
-                this->setSession(buf[2]);
-                this->parseMainMsg(this->getRawMsg(), 3);
-                this->parseNick(buf[0]);
-                break;
+                mainMsg(rawMsg());
+                return this;
             }
             else
             {
-                this->setMsgType(Type::Private);
-                this->parseMainMsg(this->getRawMsg(), 3);
-                this->parseNick(buf[0]);
-                this->setSession(buf[2]);
-                break;
+                parseFrom(msg);
             }
-        }
-        break;
-    case Owner:
-        if (buf[0][0] != '/')
-        {
-            //这里无法判断是频道消息还是私信消息，需要外部手动设置
-            this->setMsgType(None);
-            this->_mainMsg = this->getRawMsg();
             break;
+        }
+        case 1: {
+            n++;
+            parseType(msg);
+            break;
+        }
+        case 2: {
+            n++;
+            parseTo(msg);
+            break;
+        }
+        case 3: {
+            n++;
+            mainMsg(msg.remove(0, 1));
+            break;
+        }
+        default: {
+            mainMsg(mainMsg() + " " + msg);
+            break;
+        }
+        }
+    }
+    QDateTime time = QDateTime::currentDateTime();
+    this->_time = int(time.toSecsSinceEpoch());
+    return this;
+}
+void Message::parseFrom(QString msg)
+{
+    QRegularExpression user(".*!.*@.*");
+    QRegularExpressionValidator isUser(user);
+    int pos = 0;
+    if (isUser.validate(msg, pos) == QValidator::Acceptable)
+    {
+        QStringList buf = msg.split("!");
+        //去除头部冒号
+        if (buf[0][0] == ':')
+        {
+            buf[0] = buf[0].remove(0, 1);
+        }
+        from(Message::Who::User);
+        fromName(buf[0]);
+    }
+    else
+    {
+        from(Message::Who::Server);
+        fromName(server());
+    }
+}
+void Message::parseSpecial(QString msg)
+{
+    if (msg == "PING")
+    {
+        msgType(Message::Type::Ping);
+    }
+    else if (msg == "ERROR")
+    {
+        msgType(Message::Type::Error);
+    }
+    else
+    {
+        msgType(Message::Type::None);
+    }
+    mainMsg(rawMsg());
+    from(Message::Who::Server);
+    fromName(server());
+    to(Message::Who::Me);
+    toName(myNick());
+}
+
+void Message::parseType(QString msg)
+{
+    if (msg == "PRIVMSG")
+    {
+        msgType(Message::Type::Common);
+    }
+    if (msg == "JOIN")
+    {
+        msgType(Message::Type::Join);
+    }
+    else
+    {
+        msgType(Message::Type::None);
+    }
+}
+void Message::parseTo(QString msg)
+{
+    if (msg[0] == '#')
+    {
+        to(Message::Who::Channel);
+    }
+    else
+    {
+        if (msg == myNick())
+        {
+            to(Message::Who::Me);
         }
         else
         {
-            if (buf[0] == "/msg")
-            {
-                if (buf.length() < 3)
-                {
-                    qWarning("指令不合法");
-                    this->setMsgType(Type::None);
-                }
-                else
-                {
-                    if (buf[1][0] == '#')
-                    {
-                        this->setMsgType(Type::Channel);
-                        this->_session = buf[1];
-                        this->parseMainMsg(this->getRawMsg(), 2);
-                    }
-                    else
-                    {
-                        this->setMsgType(Type::Private);
-                        this->_session = buf[1];
-                        this->parseMainMsg(this->getRawMsg(), 2);
-                    }
-                }
-                break;
-            }
-            if (buf[0] == "/join")
-            {
-                if (buf.length() < 2)
-                {
-                    qDebug("指令不合法");
-                    this->setMsgType(Type::None);
-                }
-                else
-                {
-                    this->_session = buf[1];
-                    this->setMsgType(Type::Join);
-                }
-                break;
-            }
+            to(Message::Who::User);
         }
     }
-}
-/**
- * @brief 获取一条消息的主体部分
- * @param msg 消息原始数据
- * @param index 将消息以空格分隔后，主题消息头所在的位置
- */
-void Message::parseMainMsg(const QString &msg, int index)
-{
-    QStringList buf = msg.split(" ");
-    if (index < 0 || index >= buf.length())
-    {
-        qWarning() << "mainMsg索引不合法";
-        parseMainMsg(msg, 0);
-        return;
-    }
-    //去除头部的冒号
-    if (buf[index][0] == ':')
-    {
-        buf[index] = buf[index].remove(0, 1);
-    }
-    QString mainMsg = "";
-    for (int i = index; i < buf.length(); i++)
-    {
-        if (i == buf.length() - 1)
-        {
-            mainMsg += buf[i];
-            continue;
-        }
-        mainMsg += buf[i] + " ";
-    }
-    this->_mainMsg = mainMsg;
-}
-/**
- * @brief 获取消息主体信息
- * @return 原始消息中去掉头部及指令之后最后真正有用的主体信息
- */
-QString Message::getMainMsg()
-{
-    if (this->_mainMsg.isEmpty())
-    {
-        qDebug() << "主体信息为空";
-        return "";
-    }
-    return this->_mainMsg;
-}
-/**
- * @brief 解析消息发送者信息
- * @param msg 用户消息原始数据中空格分隔的第一部分
- * 例如：colutius!~colutius@123.123 PRIVMSG #colutius :hello?
- * 传入colutius!~colutius@123.123即可
- */
-void Message::parseNick(const QString &msg)
-{
-    QStringList buf = msg.split("!");
-    //去除头部冒号
-    if (buf[0][0] == ':')
-    {
-        buf[0] = buf[0].remove(0, 1);
-    }
-    this->setNick(buf[0]);
-    buf = msg.split("@");
-    this->_ip = buf[1];
-}
-/**
- * @brief 设置消息发送者昵称
- * @param nick 消息发送者昵称
- */
-void Message::setNick(QString nick)
-{
-    this->_nick = std::move(nick);
-}
-/**
- * @brief 获取会话名
- * @return 消息所在会话名
- */
-QString Message::getSession()
-{
-    return this->_session;
-}
-/**
- * @brief 获取消息发送者昵称
- * @return 消息发送者昵称
- */
-QString Message::getNick()
-{
-    return this->_nick;
-}
-/**
- * @brief 获取消息发送者ip
- * @return 消息发送者ip
- */
-QString Message::getIp()
-{
-    return this->_ip;
-}
-/**
- * @brief 设置消息发送/接收时间
- */
-void Message::setTime()
-{
-    QDateTime time = QDateTime::currentDateTime();
-    this->_msgTime = int(time.toSecsSinceEpoch());
-}
-/**
- * @brief 获取数字消息的数字值
- * @return 数字消息的数字值
- */
-int Message::getNum() const
-{
-    return this->_num;
-}
-/**
- * @brief 获取消息的发送时间
- * @return QTime格式的时间
- */
-int Message::getTime()
-{
-    return this->_msgTime;
-}
-/**
- * @brief 设置消息所在会话
- * @param session 会话名称
- */
-void Message::setSession(QString session)
-{
-    this->_session = session;
+    toName(msg);
 }

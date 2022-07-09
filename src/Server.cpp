@@ -9,6 +9,7 @@
  *
  */
 #include "Server.h"
+#include <qdebug.h>
 /**
  * @brief 有参构造，
  * @param type 服务器连接类型，Tcp或Ssl,默认为Tcp
@@ -180,20 +181,22 @@ void Server::receiveData()
         }
         qDebug() << i;
         //创建消息实例
-        auto *message = new Message(i);
+        auto *message = new Message();
+        message->server(getHost())->myNick(getNick())->rawMsg(i)->parse();
         //按消息发送者分类处理
-        switch (message->getMsgSender())
+        switch (message->from())
         {
             //服务器消息
         case Message::Server:
             //按消息类型分类处理
-            switch (message->getMsgType())
+            switch (message->msgType())
             {
             case Message::None:
                 this->_messageList.append(message);
                 break;
             case Message::Ping:
-                _sendData("PONG :" + message->getMainMsg());
+                _sendData(message->mainMsg().replace("PING", "PONG"));
+                qDebug("Ping?Pong!");
                 break;
             case Message::Error:
                 this->_messageList.append(message);
@@ -203,6 +206,7 @@ void Server::receiveData()
                 break;
             case Message::Num:
                 //按数字值分别处理
+                /**
                 switch (message->getNum())
                 {
                 case 376:
@@ -214,6 +218,7 @@ void Server::receiveData()
                 default:
                     break;
                 }
+                **/
                 break;
             default:
                 this->_messageList.append(message);
@@ -223,9 +228,9 @@ void Server::receiveData()
             //用户消息
         case Message::User:
             //获取消息来自的会话
-            if (message->getMsgType() == Message::Private)
+            if (message->to() == Message::Me)
             {
-                QString name = message->getNick();
+                QString name = message->fromName();
                 foreach (auto *session, this->_sessionList)
                 {
                     if (session->getName() == name)
@@ -237,7 +242,7 @@ void Server::receiveData()
             }
             else
             {
-                QString channel = message->getSession();
+                QString channel = message->toName();
                 foreach (auto *session, this->_sessionList)
                 {
                     if (session->getName() == channel)
@@ -350,29 +355,29 @@ int Server::getSessionNum()
  */
 void Server::sendMsg(Message *message)
 {
-    message->setNick(this->getNick());
-    if (message->getSession().isEmpty())
+    message->myNick(this->getNick());
+    if (message->toName().isEmpty())
     {
         qWarning("发送消息没有设置session");
         return;
     }
-    if (message->getMsgSender() != Message::Owner)
+    if (message->from() != Message::Me)
     {
         qWarning("该消息发送者不是Owner");
         return;
     }
-    if (message->getMsgType() == Message::None)
+    if (message->msgType() == Message::None)
     {
-        if (message->getSession()[0] == '#')
+        if (message->toName() == '#')
         {
-            message->setMsgType(Message::Channel);
+            message->to(Message::Channel);
         }
         else
         {
-            message->setMsgType(Message::Private);
+            message->to(Message::User);
         }
     }
-    this->_sendData("PRIVMSG " + message->getSession() + " :" + message->getMainMsg());
+    this->_sendData("PRIVMSG " + message->toName() + " :" + message->mainMsg());
 }
 /**
  * @brief 根据索引获取消息实例
