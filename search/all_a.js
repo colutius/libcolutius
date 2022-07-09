@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['networkerror_0',['networkError',['../classServer.html#aa41860d4665f38917ee939bd5b7b359f',1,'Server']]],
-  ['networkok_1',['networkOk',['../classServer.html#a3d6f1ef043956f0099e94d0be046b543',1,'Server']]],
-  ['newmsg_2',['newMsg',['../classSession.html#a7ef26b4c9ded1883f03aa5e3394d3709',1,'Session']]],
-  ['nick_3',['Nick',['../classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bada61946ceda894152a4c903bc5e243c6',1,'Message']]],
-  ['none_4',['None',['../classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2ba824daf8c4b37888639211f3b023c526e',1,'Message']]],
-  ['notice_5',['Notice',['../classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bad8306a69fa50f815d9a6322bd8cb67ca',1,'Message']]],
-  ['num_6',['Num',['../classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2baad24b154eb38edd0253c6fcb4a489306',1,'Message']]]
+  ['mainmsg_0',['mainMsg',['../classMessage.html#a872fb7366f9adb7ed57113826b874481',1,'Message::mainMsg()'],['../classMessage.html#ae605fe488d02e9d4eff469e4e700f614',1,'Message::mainMsg(QString mainMsg)']]],
+  ['me_1',['Me',['../classMessage.html#a7f797f97fce7e506f8023f84fe7bd7c9a05873ff2eedd40aac6c7b51e32ebb42e',1,'Message']]],
+  ['message_2',['Message',['../classMessage.html',1,'Message'],['../classMessage.html#ab4d7d907d66174179b05b244190ffb07',1,'Message::Message()']]],
+  ['message_2ecpp_3',['Message.cpp',['../Message_8cpp.html',1,'']]],
+  ['message_2eh_4',['Message.h',['../Message_8h.html',1,'']]],
+  ['msgtype_5',['msgType',['../classMessage.html#a731bd346fb93dfd703c34cbec57d5f75',1,'Message::msgType()'],['../classMessage.html#afdef317b2784326fff0410985aba131c',1,'Message::msgType(Type type)']]],
+  ['mynick_6',['myNick',['../classMessage.html#a31f5e2887c199d39aa156431478c3318',1,'Message::myNick()'],['../classMessage.html#a652468f8e941c83468c2da908be84033',1,'Message::myNick(QString myNick)']]]
 ];

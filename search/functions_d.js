@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['_7echannel_0',['~Channel',['../classChannel.html#aee8f50152fdf71d78eeb5d8ce82eced7',1,'Channel']]],
-  ['_7emessage_1',['~Message',['../classMessage.html#aefaeef0caed942ae0920bea838065b0a',1,'Message']]],
-  ['_7eserver_2',['~Server',['../classServer.html#af575d2e7efe3b7130dcbffc2c163f5e6',1,'Server']]],
-  ['_7esession_3',['~Session',['../classSession.html#a0f31ff6c59ea04a520655cbc11cf63bc',1,'Session']]],
-  ['_7euser_4',['~User',['../classUser.html#aba1bb1d9e2a000c947839c5bb3de88d0',1,'User']]]
+  ['time_0',['time',['../classMessage.html#accc4653b874911e427b412371f66e33b',1,'Message']]],
+  ['to_1',['to',['../classMessage.html#a330c1b75af4141ecab934abcc602b22d',1,'Message::to()'],['../classMessage.html#ac6fa24d09735bc71bdc25c0ec4934a83',1,'Message::to(Who to)']]],
+  ['toname_2',['toName',['../classMessage.html#a6801d58380878d7764801baf069000c8',1,'Message::toName()'],['../classMessage.html#aefa8f8b31a2fc14f9803190eb5730ff6',1,'Message::toName(QString toName)']]],
+  ['typestr_3',['typeStr',['../classMessage.html#ad486423821de1375ce0bbe5c74e7f692',1,'Message::typeStr()'],['../classMessage.html#a224902e6d24433b5a4f4ba172d013bc2',1,'Message::typeStr(QString type)']]]
 ];

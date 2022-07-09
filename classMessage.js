@@ -1,10 +1,5 @@
 var classMessage =
 [
-    [ "Sender", "classMessage.html#a1f1da61616045ef45234ae6bf1f13cfd", [
-      [ "Server", "classMessage.html#a1f1da61616045ef45234ae6bf1f13cfdaaf7fa39a219651c82e61a888711fdfba", null ],
-      [ "User", "classMessage.html#a1f1da61616045ef45234ae6bf1f13cfda9f90f0bb258989e3bb388ab81cde3401", null ],
-      [ "Owner", "classMessage.html#a1f1da61616045ef45234ae6bf1f13cfda63154053dcac3c73a835c4791989d83a", null ]
-    ] ],
     [ "Type", "classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2b", [
       [ "None", "classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2ba824daf8c4b37888639211f3b023c526e", null ],
       [ "Ping", "classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bab4597cf7e33d644159227cf13ad7d051", null ],
@@ -15,24 +10,36 @@ var classMessage =
       [ "Nick", "classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bada61946ceda894152a4c903bc5e243c6", null ],
       [ "Kick", "classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bae84707f71527ec2711cf514880b0acb9", null ],
       [ "Num", "classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2baad24b154eb38edd0253c6fcb4a489306", null ],
-      [ "Private", "classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2bace272047fc33bcc12ed0ad0eefc14e69", null ],
-      [ "Channel", "classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2ba7fd9de074f0c9c03ce0850b175ced457", null ]
+      [ "Common", "classMessage.html#a1c65ab3f02ba5b175f583f9d275ecf2ba01d449fc4458ceea3556c93ae9e1a062", null ]
     ] ],
-    [ "Message", "classMessage.html#ac5c901cc74e9c328ae32140d2653c1cb", null ],
+    [ "Who", "classMessage.html#a7f797f97fce7e506f8023f84fe7bd7c9", [
+      [ "Server", "classMessage.html#a7f797f97fce7e506f8023f84fe7bd7c9aaf7fa39a219651c82e61a888711fdfba", null ],
+      [ "Channel", "classMessage.html#a7f797f97fce7e506f8023f84fe7bd7c9a7fd9de074f0c9c03ce0850b175ced457", null ],
+      [ "User", "classMessage.html#a7f797f97fce7e506f8023f84fe7bd7c9a9f90f0bb258989e3bb388ab81cde3401", null ],
+      [ "Me", "classMessage.html#a7f797f97fce7e506f8023f84fe7bd7c9a05873ff2eedd40aac6c7b51e32ebb42e", null ]
+    ] ],
+    [ "Message", "classMessage.html#ab4d7d907d66174179b05b244190ffb07", null ],
     [ "~Message", "classMessage.html#aefaeef0caed942ae0920bea838065b0a", null ],
-    [ "getIp", "classMessage.html#a87dcb7cbbdfaf266cd2a428802bdaa49", null ],
-    [ "getMainMsg", "classMessage.html#a73d73c688a8514e7c67286ef0ec91c1f", null ],
-    [ "getMsgSender", "classMessage.html#aae1bc27a637ea423edf95e6265d916e4", null ],
-    [ "getMsgType", "classMessage.html#a5d44e86444c45ea074485b30a9b9950b", null ],
-    [ "getNick", "classMessage.html#aa55a14be6378712f457137bd897cdd20", null ],
-    [ "getNum", "classMessage.html#a9272d260ba25b5582aa3b28e52dcb80c", null ],
-    [ "getRawMsg", "classMessage.html#a68aef9a3611426c332608c6bda53ad8d", null ],
-    [ "getSession", "classMessage.html#a42f730077a3506158563b653b36df60f", null ],
-    [ "getTime", "classMessage.html#a0a076c2ae0bef9b65e1a97fc2f419797", null ],
-    [ "parse", "classMessage.html#a0d00f328a94b51a4482826525be45eac", null ],
-    [ "setMsgSender", "classMessage.html#ac19afd652d4cd3868785fa8f44ae7a49", null ],
-    [ "setMsgType", "classMessage.html#a7fa5472aede90589df728d9e3901c0b8", null ],
-    [ "setNick", "classMessage.html#abf5ef3d56cc6ac9b18c2fa1b34059e53", null ],
-    [ "setRawMsg", "classMessage.html#ad6cc31e67b950ead5be65fa458c58322", null ],
-    [ "setSession", "classMessage.html#a05ba47a91bf98560044c9c52fb053e59", null ]
+    [ "from", "classMessage.html#a6488e1958b08cffa7401cbb60a70b52d", null ],
+    [ "from", "classMessage.html#a8f477155354ece29666e9858ff4da17d", null ],
+    [ "fromName", "classMessage.html#a8e366588aca0a49da562279a54623a1e", null ],
+    [ "fromName", "classMessage.html#a936642c96af54790eda33f5714d100a3", null ],
+    [ "mainMsg", "classMessage.html#a872fb7366f9adb7ed57113826b874481", null ],
+    [ "mainMsg", "classMessage.html#ae605fe488d02e9d4eff469e4e700f614", null ],
+    [ "msgType", "classMessage.html#a731bd346fb93dfd703c34cbec57d5f75", null ],
+    [ "msgType", "classMessage.html#afdef317b2784326fff0410985aba131c", null ],
+    [ "myNick", "classMessage.html#a31f5e2887c199d39aa156431478c3318", null ],
+    [ "myNick", "classMessage.html#a652468f8e941c83468c2da908be84033", null ],
+    [ "parse", "classMessage.html#a8569c81073c0bb7662e017dca23f8c03", null ],
+    [ "rawMsg", "classMessage.html#a0124e7123b6ef59feae760de62ff892d", null ],
+    [ "rawMsg", "classMessage.html#a550fa4207d76e3812a419d7b18aae468", null ],
+    [ "server", "classMessage.html#a66a77b2118bb19dbec4cb2ef49b59cb0", null ],
+    [ "server", "classMessage.html#a0dc03dcce12f2a0130125a1853e0066b", null ],
+    [ "time", "classMessage.html#accc4653b874911e427b412371f66e33b", null ],
+    [ "to", "classMessage.html#a330c1b75af4141ecab934abcc602b22d", null ],
+    [ "to", "classMessage.html#ac6fa24d09735bc71bdc25c0ec4934a83", null ],
+    [ "toName", "classMessage.html#a6801d58380878d7764801baf069000c8", null ],
+    [ "toName", "classMessage.html#aefa8f8b31a2fc14f9803190eb5730ff6", null ],
+    [ "typeStr", "classMessage.html#ad486423821de1375ce0bbe5c74e7f692", null ],
+    [ "typeStr", "classMessage.html#a224902e6d24433b5a4f4ba172d013bc2", null ]
 ];
